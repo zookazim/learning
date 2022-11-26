@@ -9,10 +9,19 @@ https://www.digitalocean.com/community/tutorials/how-to-make-a-web-application-u
 
 ## Run Flask App
 
-When using Virtual Box 
+### When using Virtual Box 
 1. Open settings > network register port 5000 
-2. use the following run command ($> flask run --host=0.0.0.0)
+2. Get flask to listen on all ports on the VM 
 
-{"name": "Bob", 
-"languages": ["English", "French"]
-}
+``` bash        
+flask run --host=0.0.0.0
+```
+
+### Running Flask from the command line
+
+``` bash    
+export FLASK_APP=app.py
+export FLASK_ENV=development        
+flask run
+```
+
