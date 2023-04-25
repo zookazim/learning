@@ -9,5 +9,11 @@ Jinja is a fast, expressive, extensible templating engine. Special placeholders 
 https://jinja.palletsprojects.com/en/3.1.x/
 
 
-## 3. Usage Notes
+## 3. VS Code extension
+
+I used the extension "Jinja Template" to highlight code better
+
+https://marketplace.visualstudio.com/items?itemName=samuelcolvin.jinjahtml
+
+
 
