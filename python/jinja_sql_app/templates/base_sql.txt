@@ -1,0 +1,30 @@
+{# -----------------------------  
+   Jinja Template File
+   -----------------------------
+   Name   : Cohort selection SQL
+   Author : DaveB
+   Date   : April 2023
+   -----------------------------
+   Use this template to create the 
+   complete cohort selection sql.
+   It contains multiple child template
+   to minimise code duplication
+   and maintenance
+   -----------------------------
+#}
+
+{# Select statement #}
+SELECT {%- for value in columns %} 
+       {{ value }}
+       {%- if not loop.last -%}, {% endif -%}       
+       {% endfor %}
+  FROM {{ table_name }}
+{%- if clauses %}
+ WHERE
+       {% for clause_field, clause_value in clauses.items() -%}
+       {% if not loop.first %} 
+   AND 
+       {% endif -%}       
+       {{ clause_field }} = {% if clause_value is string -%}"{%- endif -%}{{- clause_value }}{%- if clause_value is string -%}"{%- endif -%}
+       {%- endfor -%}
+{% endif %}

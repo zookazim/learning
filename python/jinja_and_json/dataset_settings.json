@@ -1,0 +1,13 @@
+{
+    "datasets": [
+      {
+        "emer": {
+          "sql_template_extract": "emer_extract.jj",
+          "sql_template_cohort": "emer_cohort.jj",
+          "date_col": "pres_rel",
+          "cares_rec_type": "emer",
+          "db_tab": {}
+        }
+      }
+    ]
+  }

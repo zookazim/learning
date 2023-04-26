@@ -1,0 +1,70 @@
+{
+    "project": {
+      "id": "p1",
+      "proj_no": "201809.01",
+      "task_no": "001",
+      "proj_type": "Linked Data Standard",
+      "proj_title": "Investigating Cardiac Wards",
+      "princ_invest": "Gill James",
+      "cohort_spec": [
+        {
+          "spec1": {
+            "dat_name": "canc",
+            "spec_date_min": "2010-01-01",
+            "spec_date_max": "2022-12-31",
+            "icd_codes_diag": [
+              "Z27",
+              "Z28",
+              "Z29"
+            ]
+          }, 
+          "spec2": {
+            "dat_name": "morb",
+            "spec_date_min": "2003-01-01",
+            "spec_date_max": "2012-12-31",
+            "icd_codes_diag": [
+              "Z27",
+              "Z28",
+              "Z29"
+            ]
+          }
+        }
+      ],
+      "datasets_spec": [
+        {
+          "dat_name": "emer",
+          "dat_date_min": "2003-01-01",
+          "dat_date_max": "2012-12-31",
+          "variables_requested": [
+            "Presentation Date",
+            "Principal Diagnosis",
+            "Marital Status",
+            "Country of Birth"
+          ],
+          "db_fields_for_extraction": [
+            "pres_rel",
+            "diag",
+            "mar",
+            "cob"
+          ]
+        }
+       ,{
+          "dat_name": "morb",
+          "dat_date_min": "2003-01-01",
+          "dat_date_max": "2012-12-31",
+          "variables_requested": [
+            "Separation Date",
+            "Principal Diagnoses",
+            "Additional Diagnoses",
+            "Establishment Code"
+          ],
+          "db_fields_for_extraction": [
+            "sep",
+            "diag",
+            "dagger",
+            "est_code"
+          ]
+        }
+      ]
+    }
+  } 

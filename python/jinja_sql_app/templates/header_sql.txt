@@ -1,0 +1,20 @@
+{# -----------------------------  
+   Jinja Template File
+   -----------------------------
+   Name   : Header Template
+   Author : DaveB
+   Date   : April 2023
+   -----------------------------
+   Adds a general header block to 
+   the sql statement
+   -----------------------------
+#}
+{% block header %}
+----------------------------------------------------
+-- Proj ID : {{ id }}
+-- Proj No : {{ proj_no }}
+-- Task No : {{ task_no }}
+-- Title   : {{ proj_title }}
+-- Principle Investigator: {{ princ_invest }}
+----------------------------------------------------
+{% endblock header %}
