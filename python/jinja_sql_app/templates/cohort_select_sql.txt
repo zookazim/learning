@@ -11,10 +11,39 @@
    -----------------------------
 #}
 
-{% extends "header_sql.txt" %}
+{% extends "base_sql.txt" %}
 
--------------
-{# Header Block #}
-{% block header %}
-{% endblock header %}
--------------
+{%- block title -%}
+----------------------------------------------------
+-- Cohort Selection
+----------------------------------------------------
+{%- endblock title -%}
+
+{% block select %}
+SELECT {%- for value in columns %} 
+       {{ value }}
+       {%- if not loop.last -%}, {% endif -%}       
+       {% endfor %}
+  FROM {{ table_name }}
+
+{% endblock select %}
+
+{% block where_clause %}
+where 
+      ---- Date criteria ----
+      {{ criteria_date_field }} <= {{ criteria_date_min }}
+  and {{ criteria_date_field }} >= {{ criteria_date_max }}
+      ---- Additional criteria ----
+      {%- for clause_field, clause_value in additional_clauses.items() %}
+  and 
+      {{ clause_field }} = {% if clause_value is string -%}"{%- endif -%}{{- clause_value }}{%- if clause_value is string -%}"{%- endif -%}
+      {%- endfor -%}      
+      ---- ICD Code lists ----
+{% if icd_code_list %}  and (
+      {%- for code in icd_code_list %}
+      {% if not loop.first -%} or {%- endif %} {{icd_code_field}} like '{{ code }}%' 
+      {%- endfor %} 
+      )
+    {%- endif %}
+
+{% endblock where_clause %}
