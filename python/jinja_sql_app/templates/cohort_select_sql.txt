@@ -60,21 +60,15 @@ SELECT {%- for value in columns %}
 {% endblock select %}
 
 {% block where_clause %}
-where 
-      ---- Date criteria ----
-      {{ criteria_date_field }} <= {{ criteria_date_min }}
-  and {{ criteria_date_field }} >= {{ criteria_date_max }}
-      ---- Additional criteria ----
-      {# Loop through additional clauses #}
-      {%- for clause_field, clause_value in additional_clauses.items() %}
-  and 
-      {# If value is string add quotes using macro above#}
-      {{ clause_field }} = {{ add_quotes(clause_value) }}
-      {%- endfor %}      
-      ---- ICD Code lists ----
-      {% if icd_code_list -%}  and (
-         {{ create_like_list(icd_code_list, icd_code_field) }}
-         )
-      {% endif %}
+ WHERE 
+    {%- for clause in where_clauses %}
+    {% if not loop.first %} and {% else %}    {% endif -%}
+        {% if clause['is_list'] == 'TRUE' %} 
+          {{ clause['field_name'] }} ( {{ create_or_list(clause['criteria']) }} )
+        {% else %}
+          {{ clause['field_name'] }} {{ clause['condition_type'] }} {{ clause['criteria'] }}
+        {% endif %}
+    {%- endfor %}
+
 
 {% endblock where_clause %}

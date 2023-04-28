@@ -17,12 +17,21 @@ columns = [ 'TumourID', 'CancerRegistrationNumber', 'DiagnosisYear','DiagnosisDa
 table_name = 'DW_Transformed.WACR.CancerMasterfile'
 
 # Where clauses
-criteria_date_field = "DateOfDiagnosis"
-criteria_date_min   = "1984-01-01"
-criteria_date_max   = "2023-12-31"
-icd_code_field      = 'CancerType'
-icd_code_list       = ["C56","C48.1","C48.2","C48.8","C57"]
-additional_clauses  = {"behaviour" : ["2","3"], "sex": "2"}
+#criteria_date_field = "DateOfDiagnosis"
+#criteria_date_min   = "1984-01-01"
+#criteria_date_max   = "2023-12-31"
+#icd_code_field      = 'CancerType'
+#icd_code_list       = ["C56","C48.1","C48.2","C48.8","C57"]
+#additional_clauses  = {"behaviour" : ["2","3"], "sex": "2"}
+
+where_clauses = [{"field_name":"DateOfDiagnosis", "criteria":"20100101", "field_data_type":"date"  ,"is_list":"FALSE", "condition_type":">="  }
+                ,{"field_name":"DateOfDiagnosis", "criteria":"20221231", "field_data_type":"date"  ,"is_list":"FALSE", "condition_type":"<="  }
+                ,{"field_name":"Sex"            , "criteria":"2"       , "field_data_type":"date"  ,"is_list":"FALSE", "condition_type":"="  }
+                ,{"field_name":"icd_code"       , "criteria":["C56","C48.1","C48.2","C48.8","C57"]
+                                                                       , "field_data_type":"string","is_list":"TRUE"  , "condition_type":"like"}
+                ,{"field_name":"behaviour"      , "criteria":['1','2'] , "field_data_type":"string","is_list":"TRUE"  , "condition_type":"="}
+                ]
+
 
 
 #proj_no=proj_no, task_no=task_no, proj_title=proj_title, princ_invest=princ_invest
@@ -36,12 +45,7 @@ output = template.render(
             ,task_no      = task_no
             ,proj_title   = proj_title
             ,princ_invest = princ_invest
-            ,criteria_date_field = criteria_date_field
-            ,criteria_date_min   = criteria_date_min
-            ,criteria_date_max   = criteria_date_max
-            ,additional_clauses = additional_clauses
-            ,icd_code_field = icd_code_field
-            ,icd_code_list  = icd_code_list
+            ,where_clauses = where_clauses
             )
 
 #output = template.render(criteria_date_field="DateOfDiagnosis", criteria_date_min="1984-01-01", criteria_date_max="2023-12-31")
