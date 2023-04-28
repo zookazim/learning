@@ -13,6 +13,37 @@
 
 {% extends "base_sql.txt" %}
 
+{# Macro to add quotation marks to text if necessary #}
+{% macro add_quotes(str_value) -%}
+  {%- if str_value is string -%}
+    '{{ str_value }}'
+  {%- else -%}
+    {{ str_value }}
+  {%- endif -%}
+{%- endmacro -%}
+
+{# Macro to split list into 'or' statements #}
+{% macro create_or_list(lst_values) -%}
+  {%- for value in lst_values %}
+    {% if not loop.first -%} or {%- endif %} {{ add_quotes(value) }} 
+  {%- endfor %} 
+{%- endmacro -%}
+
+{# Macro to split list into 'like' statements #}
+{% macro create_like_list(lst_values, str_field_name) -%}
+  {%- for value in lst_values %}
+    {% if not loop.first -%} or {%- endif %} {{str_field_name}} like '{{ value }}%' 
+  {%- endfor %} 
+{%- endmacro -%}
+
+{# Macro to check if variable is a list #}
+{% macro is_var_list(var) -%}
+  {% if var is iterable and (var is not string and var is not mapping) %}
+   TRUE
+  {% endif%}
+{%- endmacro -%}
+
+
 {%- block title -%}
 ----------------------------------------------------
 -- Cohort Selection
@@ -34,16 +65,16 @@ where
       {{ criteria_date_field }} <= {{ criteria_date_min }}
   and {{ criteria_date_field }} >= {{ criteria_date_max }}
       ---- Additional criteria ----
+      {# Loop through additional clauses #}
       {%- for clause_field, clause_value in additional_clauses.items() %}
   and 
-      {{ clause_field }} = {% if clause_value is string -%}"{%- endif -%}{{- clause_value }}{%- if clause_value is string -%}"{%- endif -%}
-      {%- endfor -%}      
+      {# If value is string add quotes using macro above#}
+      {{ clause_field }} = {{ add_quotes(clause_value) }}
+      {%- endfor %}      
       ---- ICD Code lists ----
-{% if icd_code_list %}  and (
-      {%- for code in icd_code_list %}
-      {% if not loop.first -%} or {%- endif %} {{icd_code_field}} like '{{ code }}%' 
-      {%- endfor %} 
-      )
-    {%- endif %}
+      {% if icd_code_list -%}  and (
+         {{ create_like_list(icd_code_list, icd_code_field) }}
+         )
+      {% endif %}
 
 {% endblock where_clause %}

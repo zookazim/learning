@@ -31,5 +31,5 @@
 {%- block select %}
 {% endblock select %}
 
-{% block where_clause %}
+{%- block where_clause %}
 {% endblock where_clause %}

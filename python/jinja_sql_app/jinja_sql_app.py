@@ -22,7 +22,7 @@ criteria_date_min   = "1984-01-01"
 criteria_date_max   = "2023-12-31"
 icd_code_field      = 'CancerType'
 icd_code_list       = ["C56","C48.1","C48.2","C48.8","C57"]
-additional_clauses  = {"start_date": "John", "age": 25}
+additional_clauses  = {"behaviour" : ["2","3"], "sex": "2"}
 
 
 #proj_no=proj_no, task_no=task_no, proj_title=proj_title, princ_invest=princ_invest
