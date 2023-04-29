@@ -11,64 +11,11 @@
    -----------------------------
 #}
 
-{% extends "base_sql.txt" %}
-
-{# Macro to add quotation marks to text if necessary #}
-{% macro add_quotes(str_value) -%}
-  {%- if str_value is string -%}
-    '{{ str_value }}'
-  {%- else -%}
-    {{ str_value }}
-  {%- endif -%}
-{%- endmacro -%}
-
-{# Macro to split list into 'or' statements #}
-{% macro create_or_list(lst_values) -%}
-  {%- for value in lst_values %}
-    {% if not loop.first -%} or {%- endif %} {{ add_quotes(value) }} 
-  {%- endfor %} 
-{%- endmacro -%}
-
-{# Macro to split list into 'like' statements #}
-{% macro create_like_list(lst_values, str_field_name) -%}
-  {%- for value in lst_values %}
-    {% if not loop.first -%} or {%- endif %} {{str_field_name}} like '{{ value }}%' 
-  {%- endfor %} 
-{%- endmacro -%}
-
-{# Macro to check if variable is a list #}
-{% macro is_var_list(var) -%}
-  {% if var is iterable and (var is not string and var is not mapping) %}
-   TRUE
-  {% endif%}
-{%- endmacro -%}
-
-
-{%- block title -%}
+{%- block title %}
 ----------------------------------------------------
 -- Cohort Selection
-----------------------------------------------------
-{%- endblock title -%}
+{% endblock title %}
 
-{% block select %}
-SELECT {%- for value in columns %} 
-       {{ value }}
-       {%- if not loop.last -%}, {% endif -%}       
-       {% endfor %}
-  FROM {{ table_name }}
+{%- include 'header_sql.txt' %}
 
-{% endblock select %}
-
-{% block where_clause %}
- WHERE 
-    {%- for clause in where_clauses %}
-    {% if not loop.first %} and {% else %}    {% endif -%}
-        {% if clause['is_list'] == 'TRUE' %} 
-          {{ clause['field_name'] }} ( {{ create_or_list(clause['criteria']) }} )
-        {% else %}
-          {{ clause['field_name'] }} {{ clause['condition_type'] }} {{ clause['criteria'] }}
-        {% endif %}
-    {%- endfor %}
-
-
-{% endblock where_clause %}
+{%- include 'base_sql.txt' %}

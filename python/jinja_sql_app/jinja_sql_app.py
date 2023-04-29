@@ -26,17 +26,17 @@ table_name = 'DW_Transformed.WACR.CancerMasterfile'
 
 where_clauses = [{"field_name":"DateOfDiagnosis", "criteria":"20100101", "field_data_type":"date"  ,"is_list":"FALSE", "condition_type":">="  }
                 ,{"field_name":"DateOfDiagnosis", "criteria":"20221231", "field_data_type":"date"  ,"is_list":"FALSE", "condition_type":"<="  }
-                ,{"field_name":"Sex"            , "criteria":"2"       , "field_data_type":"date"  ,"is_list":"FALSE", "condition_type":"="  }
+                ,{"field_name":"Sex"            , "criteria":"2"       , "field_data_type":"string"  ,"is_list":"FALSE", "condition_type":"="  }
+                ,{"field_name":"behaviour"      , "criteria":['1','2'] , "field_data_type":"string","is_list":"TRUE"  , "condition_type":"="}
                 ,{"field_name":"icd_code"       , "criteria":["C56","C48.1","C48.2","C48.8","C57"]
                                                                        , "field_data_type":"string","is_list":"TRUE"  , "condition_type":"like"}
-                ,{"field_name":"behaviour"      , "criteria":['1','2'] , "field_data_type":"string","is_list":"TRUE"  , "condition_type":"="}
                 ]
 
 
 
 #proj_no=proj_no, task_no=task_no, proj_title=proj_title, princ_invest=princ_invest
-
-env = Environment(loader=FileSystemLoader('templates'))
+ 
+env = Environment(loader=FileSystemLoader('templates'), lstrip_blocks=True,trim_blocks=True)
 template = env.get_template('cohort_select_sql.txt')
 output = template.render(
              columns      = columns
