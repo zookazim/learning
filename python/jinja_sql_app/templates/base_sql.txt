@@ -25,6 +25,12 @@
   {%- endif -%}
 {%- endmacro -%}
 {# 
+   Macro to cast string as date
+#}
+{%- macro cast_date(var) -%}
+   CAST('{{var}}' as date)
+{%- endmacro -%}
+{# 
    Macro to split list into items for the 'IN' statement 
 #}
 {%- macro create_or_list(lst_values, str_field_name, lst_data_types) -%}
@@ -97,6 +103,10 @@ SELECT {% for value in columns %}
         {%- elif (clause['is_list'] == 'TRUE') and (clause['condition_type'] == 'like') -%}
           {# use create_like_list macro to build up statement #}
 ({{ create_like_list(clause['criteria'], clause['field_name'], clause['field_data_type']) }}       )
+        {# Date condition #}
+        {%- elif (clause['is_list'] == 'FALSE') and (clause['field_data_type'] == 'date') -%}
+          {# use add_quotes macro to include quotes if required #}
+{{ clause['field_name'] }} {{ clause['condition_type'] }} {{ cast_date(clause['criteria']) }}
         {# Simple condition (use add_quotes macro to include quotes if required) #}
         {%- else -%}
           {# use add_quotes macro to include quotes if required #}
