@@ -1,0 +1,21 @@
+{# -----------------------------  
+   Jinja Template File
+   -----------------------------
+   Name   : Cohort Selection Template
+   Author : DaveB
+   Date   : April 2023
+   -----------------------------
+   Puts together all the template
+   blocks required for a cohort 
+   selection SQL statement
+   -----------------------------
+#}
+
+{%- block title %}
+----------------------------------------------------
+-- Cohort Selection
+{% endblock title %}
+
+{%- include 'header_sql.txt' %}
+
+{%- include 'base_sql.txt' %}
