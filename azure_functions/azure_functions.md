@@ -23,7 +23,15 @@ https://marketplace.visualstudio.com/items?itemName=ms-python.python
 https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions
 
 
-## Microsoft Tutorial
+## Microsoft Docs
 
-https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-vs-code-python?pivots=python-mode-configuration
+## Quick Start Doc
+
+https://learn.microsoft.com/en-GB/azure/azure-functions/create-first-function-vs-code-python?pivots=python-mode-configuration
+
+
+### HTTP Trigger Doc
+
+https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-http-webhook-trigger?pivots=programming-language-python&tabs=python-v2%2Cin-process%2Cfunctionsv2
+
 
