@@ -46,12 +46,21 @@ def fn_parse_args():
     #v_inifile = args.inifilename
     return args
 
+
+# -----------------------------------------------------------
+# Main
+# -----------------------------------------------------------
+
+# Process input arguments
+args = fn_parse_args()
+
+
 # Opening JSON file
 f = open(args.json_filename)
 
 # returns JSON object as a dictionary
 data = json.load(f)
-  
+
 project = data['project']
 
 env = Environment(loader=FileSystemLoader('templates'), lstrip_blocks=True,trim_blocks=True)
@@ -66,7 +75,7 @@ output = template.render(
             ,where_clauses = project["cohort_specs"][0]["criteria"]
             )
 
-print(project["cohort_specs"][0]["criteria"])
+#print(project["cohort_specs"][0]["criteria"])
 
 # Closing file
 f.close()
