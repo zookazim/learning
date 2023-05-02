@@ -25,3 +25,4 @@
 # Ignore the environment files
 python/jinja_sql_app/my_env
 python/jinja_and_json/my_env
+python/api_requests/my_env
