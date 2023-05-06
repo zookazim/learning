@@ -58,21 +58,26 @@ args = fn_parse_args()
 # Opening JSON file
 f = open(args.json_filename)
 
-# returns JSON object as a dictionary
+# Returns JSON object as a dictionary
 data = json.load(f)
-
 project = data['project']
 
+
+
+# Create SQL Using template
 env = Environment(loader=FileSystemLoader('templates'), lstrip_blocks=True,trim_blocks=True)
 template = env.get_template('cohort_select_sql.txt')
 output = template.render(
-             table_name   = project["cohort_specs"][0]["table_name_for_extraction"]
-            ,columns      = project["cohort_specs"][0]["db_fields_for_extraction"]
-            ,proj_no      = project["proj_no"]
-            ,task_no      = project["task_no"]
-            ,proj_title   = project["proj_title"]
-            ,princ_invest = project["princ_invest"]
+             proj_id       = project["id"]
+            ,proj_no       = project["proj_no"]
+            ,task_no       = project["task_no"]
+            ,proj_title    = project["proj_title"]
+            ,princ_invest  = project["princ_invest"]
+            ,table_name    = project["cohort_specs"][0]["table_name_for_extraction"]
+            ,columns       = project["cohort_specs"][0]["lnk_src_keys"]
+            ,src           = project["cohort_specs"][0]["lnk_src"]
             ,where_clauses = project["cohort_specs"][0]["criteria"]
+            ,insert_into_table_name = project["cohort_specs"][0]["insert_into_table_name"]
             )
 
 #print(project["cohort_specs"][0]["criteria"])

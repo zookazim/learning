@@ -1,0 +1,10 @@
+
+{%- block title %}
+----------------------------------
+-- {{ title }}
+----------------------------------
+{% endblock title %}
+{%- block body %}
+No body in base template
+{% endblock body %}
+----------------------------------

@@ -1,0 +1,64 @@
+{# -----------------------------  
+   Jinja Template File
+   -----------------------------
+   Name   : Template Macros
+   Author : DaveB
+   Date   : May 2023
+   -----------------------------
+   Use these macros in jinja sql templates
+   by including the following statement;
+   {% include 'template_macros.txt' %}
+   -----------------------------
+#}
+{# 
+   -- Macros ------------------------------------ 
+
+   Macro to add quotation marks to text if necessary 
+#}
+{%- macro add_quotes(var, var_type) -%}
+  {%- if var_type == 'string' -%}
+    '{{ var }}'
+  {%- else -%}
+    {{ var }}
+  {%- endif -%}
+{%- endmacro -%}
+
+{# 
+   Macro to cast string as date
+#}
+{%- macro cast_date(var) -%}
+   CAST('{{var}}' as date)
+{%- endmacro -%}
+
+{# 
+   Macro to split list into items for the 'IN' statement 
+#}
+{%- macro create_or_list(lst_values, str_field_name, lst_data_types) -%}
+  {%- for value in lst_values -%}
+    {%- if loop.first -%} {{str_field_name}} IN ( {{ add_quotes(value, lst_data_types) }}
+    {%- else -%}
+      ,{{ add_quotes(value, lst_data_types) }} 
+    {%- endif -%}
+    {% if loop.last %} ) {% endif %}
+  {%- endfor -%}
+{%- endmacro -%}
+
+{# 
+   Macro to split list into 'like' statements 
+#}
+{%- macro create_like_list(lst_values, str_field_name, lst_data_types) -%}
+  {% for value in lst_values %}
+    {%- if loop.first %}   {{str_field_name}} like '{{ value }}%'
+    {% else %}        OR {{str_field_name}} like '{{ value }}%'
+    {% endif  %}
+  {% endfor -%} 
+{%- endmacro -%}
+
+{# 
+   Macro to check if variable is a list 
+#}
+{% macro is_var_list(var) -%}
+  {% if var is iterable and (var is not string and var is not mapping) %}
+   TRUE
+  {% endif%}
+{%- endmacro -%}

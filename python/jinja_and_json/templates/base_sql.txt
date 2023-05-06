@@ -12,68 +12,39 @@
    and maintenance
    -----------------------------
 #}
+
 {# 
    -- Macros ------------------------------------ 
-
-   Macro to add quotation marks to text if necessary 
 #}
-{%- macro add_quotes(var, var_type) -%}
-  {%- if var_type == 'string' -%}
-    '{{ var }}'
-  {%- else -%}
-    {{ var }}
-  {%- endif -%}
-{%- endmacro -%}
-{# 
-   Macro to cast string as date
+{% import 'template_macros.txt' as sql_macros %}
+{#  
+  -- MAIN ------------------------------------ 
 #}
-{%- macro cast_date(var) -%}
-   CAST('{{var}}' as date)
-{%- endmacro -%}
-{# 
-   Macro to split list into items for the 'IN' statement 
-#}
-{%- macro create_or_list(lst_values, str_field_name, lst_data_types) -%}
-  {%- for value in lst_values -%}
-    {%- if loop.first -%} {{str_field_name}} IN ( {{ add_quotes(value, lst_data_types) }}
-    {%- else -%}
-      ,{{ add_quotes(value, lst_data_types) }} 
-    {%- endif -%}
-    {% if loop.last %} ) {% endif %}
-  {%- endfor -%}
-{%- endmacro -%}
-{# 
-   Macro to split list into 'like' statements 
-#}
-{%- macro create_like_list(lst_values, str_field_name, lst_data_types) -%}
-  {% for value in lst_values %}
-    {%- if loop.first %}   {{str_field_name}} like '{{ value }}%'
-    {% else %}        OR {{str_field_name}} like '{{ value }}%'
-    {% endif  %}
-  {% endfor -%} 
-{%- endmacro -%}
-{# 
-   Macro to check if variable is a list 
-#}
-{% macro is_var_list(var) -%}
-  {% if var is iterable and (var is not string and var is not mapping) %}
-   TRUE
-  {% endif%}
-{%- endmacro -%}
 {#
--- End Macros ------------------------------------ 
-
--- MAIN ------------------------------------------ 
-
+-- Header  
+#}
+{% block title %}
+----------------------------------------------------
+-- Base SQL Statement
+{% endblock title %}
+{% block header %}
+----------------------------------------------------
+-- Proj ID : {{ id }}
+-- Proj No : {{ proj_no }}
+-- Task No : {{ task_no }}
+-- Title   : {{ proj_title }}
+-- Principle Investigator: {{ princ_invest }}
+----------------------------------------------------
+{% endblock header %}
+{#
 -- SELECT statement 
 #}
 {%- block select -%}
 
-SELECT {% for value in columns %} 
+SELECT {%- for value in columns %}                 
        {{ value }}
        {%- if not loop.last -%}, {% endif -%}       
        {% endfor %}
-       
 {% endblock select %}
 {#
 
@@ -81,6 +52,7 @@ SELECT {% for value in columns %}
 
 #}
 {% block from %}
+
 
   FROM {{ table_name }}
 
@@ -98,19 +70,19 @@ SELECT {% for value in columns %}
         {# 'or' listing #}
         {%- if (clause['is_list'] == 'TRUE') and (clause['condition_type'] == '=')  -%} 
           {# use create_or_list macro to build up statement #}
-          {{ create_or_list(clause['value'], clause['field_name'], clause['field_data_type']) }} 
+          {{ sql_macros.create_or_list(clause['value'], clause['field_name'], clause['field_data_type']) }} 
         {# 'like' listing #}
         {%- elif (clause['is_list'] == 'TRUE') and (clause['condition_type'] == 'like') -%}
           {# use create_like_list macro to build up statement #}
-({{ create_like_list(clause['value'], clause['field_name'], clause['field_data_type']) }}       )
+({{ sql_macros.create_like_list(clause['value'], clause['field_name'], clause['field_data_type']) }}       )
         {# Date condition #}
         {%- elif (clause['is_list'] == 'FALSE') and (clause['field_data_type'] == 'date') -%}
           {# use add_quotes macro to include quotes if required #}
-{{ clause['field_name'] }} {{ clause['condition_type'] }} {{ cast_date(clause['value']) }}
+{{ clause['field_name'] }} {{ clause['condition_type'] }} {{ sql_macros.cast_date(clause['value']) }}
         {# Simple condition (use add_quotes macro to include quotes if required) #}
         {%- else -%}
           {# use add_quotes macro to include quotes if required #}
-{{ clause['field_name'] }} {{ clause['condition_type'] }} {{ add_quotes(clause['value'], clause['field_data_type']) }}
+{{ clause['field_name'] }} {{ clause['condition_type'] }} {{ sql_macros.add_quotes(clause['value'], clause['field_data_type']) }}
         {% endif %}
     {%- endfor -%}
 

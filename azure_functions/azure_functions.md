@@ -25,6 +25,8 @@ https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefu
 
 ## Microsoft Docs
 
+https://learn.microsoft.com/en-us/azure/azure-functions/
+
 ## Quick Start Doc
 
 https://learn.microsoft.com/en-GB/azure/azure-functions/create-first-function-vs-code-python?pivots=python-mode-configuration

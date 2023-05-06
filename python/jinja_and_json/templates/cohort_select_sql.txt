@@ -11,11 +11,29 @@
    -----------------------------
 #}
 
+{# The cohort selection builds on the base_sql template#}
+{% extends 'base_sql.txt' %}
+
 {%- block title %}
 ----------------------------------------------------
 -- Cohort Selection
 {% endblock title %}
 
-{%- include 'header_sql.txt' %}
+{%- block select -%}
+INSERT INTO {{ insert_into_table_name }}
+       (
+         proj_id,
+         lnk_src,
+         {%- for value in columns %}                 
+         lnk_src_key{{loop.index}}    {# Add linkage src_key - could be more than one #}
+         {%- if not loop.last -%}, {% endif %} 
+         {% endfor %}
+       )
 
-{%- include 'base_sql.txt' %}
+SELECT {{ sql_macros.add_quotes(proj_id,'string') }}  as proj_id,
+       {{ sql_macros.add_quotes(src,'string') }}  as lnk_src, {# Add linkage key source name #}
+       {%- for value in columns %}                 
+       {{ value }} as lnk_src_key{{loop.index}}    {# Add linkage src_key - could be more than one #}
+       {%- if not loop.last -%}, {% endif -%}       
+       {% endfor %}
+{% endblock select %}
