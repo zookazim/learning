@@ -1,0 +1,53 @@
+{# -----------------------------  
+   Jinja Template File
+   -----------------------------
+   Name   : QA Checking Template
+   Author : DaveB
+   Date   : May 2023
+   -----------------------------
+   Creates SQL snippets for 
+   QA Checking
+   -----------------------------
+#}
+
+{# The cohort selection builds on the base_sql template#}
+{% extends 'base_sql.txt' %}
+
+{%- block title %}
+----------------------------------------------------
+-- QA Checking : {{ chk_col }} ({{ chk_type }})
+{% endblock title %}
+
+{%- block select -%}
+
+SELECT {{ sql_macros.add_quotes(proj_id,'string') }}  as proj_id,
+       {%- for value in columns %}                 
+       {{ value }}
+       {%- if not loop.last -%}, {% endif -%}       
+       {% endfor %}
+{% endblock select %}
+
+{% block from %}
+  {# The cohort selection records are joined
+     to the data collection table using
+     the lnk_src_key
+   #}
+  FROM PRJ.CohortSelect coh 
+  JOIN {{ table_name }} dat
+    ON coh.lnk_src      = dat.{{ lnk_src }}
+       {%- for value in columns %}                 
+       {{ value }} as lnk_src_key{{loop.index}}    {# Add linkage src_key - could be more than one #}
+       {%- if not loop.last -%}, {% endif -%}       
+       {% endfor %}
+
+{% endblock from %}
+
+{% block where_clause %}
+ WHERE coh.proj_id     = {{ proj_id }}
+   AND coh.cohort_name = {{ cohort_name }}
+{%- endblock where_clause %}
+
+{% block groupby_clause %}
+ GROUP BY 
+
+{%- endblock groupby_clause %}

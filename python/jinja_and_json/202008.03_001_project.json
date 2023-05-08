@@ -21,7 +21,7 @@
            ,{"field_name":"CancerType"   , "value":["C56","C48.1","C48.2","C48.8","C57"]
                                                                   , "field_data_type":"string","is_list":"TRUE"  , "condition_type":"like"}
             ],
-           "db_fields_for_checking": [
+           "checks": [
               {"chk_col":"DiagnosisDate","field_data_type":"date"  ,"chk_type":"freq_analysis"}
              ,{"chk_col":"DiagnosisDate","field_data_type":"date"  ,"chk_type":"min_max"}
              ,{"chk_col":"CancerType"   ,"field_data_type":"string","chk_type":"freq_analysis"}

@@ -34,9 +34,9 @@ SELECT {{ sql_macros.add_quotes(proj_id,'string') }}  as proj_id,
   FROM PRJ.CohortSelect coh
   JOIN DW_Transformed.LNK.LinkageKeys lnk 
     ON coh.lnk_src      = lnk.src
-   AND coh.lnk_src_key1 = coh.lnk_src_key1
-   AND coh.lnk_src_key2 = coh.lnk_src_key2
-   AND coh.lnk_src_key3 = coh.lnk_src_key3      
+   AND coh.lnk_src_key1 = lnk.lnk_src_key1
+   AND coh.lnk_src_key2 = lnk.lnk_src_key2
+   AND coh.lnk_src_key3 = lnk.lnk_src_key3      
 
 {% endblock from %}
  

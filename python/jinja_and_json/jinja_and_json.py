@@ -99,6 +99,21 @@ env = Environment(loader=FileSystemLoader('templates'), lstrip_blocks=True,trim_
 #             )
 
 # Extraction of data
+# template = env.get_template('data_extract_sql.txt')
+# output = template.render(
+#              proj_id       = project["id"]
+#             ,proj_no       = project["proj_no"]
+#             ,task_no       = project["task_no"]
+#             ,proj_title    = project["proj_title"]
+#             ,princ_invest  = project["princ_invest"]
+#             ,table_name    = project["dataset_specs"][0]["table_name_for_extraction"]
+#             ,columns       = project["dataset_specs"][0]["db_fields_for_extraction"]
+#             ,src           = project["dataset_specs"][0]["lnk_src"]
+#             ,src_keys      = project["dataset_specs"][0]["lnk_src_keys"]
+#             ,insert_into_table_name = project["cohort_specs"][0]["insert_into_table_name"]
+#             )
+
+# QA Checks
 template = env.get_template('data_extract_sql.txt')
 output = template.render(
              proj_id       = project["id"]
@@ -106,14 +121,16 @@ output = template.render(
             ,task_no       = project["task_no"]
             ,proj_title    = project["proj_title"]
             ,princ_invest  = project["princ_invest"]
-            ,table_name    = project["dataset_specs"][0]["table_name_for_extraction"]
-            ,columns       = project["dataset_specs"][0]["db_fields_for_extraction"]
-            ,src           = project["dataset_specs"][0]["lnk_src"]
-            ,src_keys      = project["dataset_specs"][0]["lnk_src_keys"]
+            ,cohort_name   = project["cohort_specs"][0]["name"]
+            ,table_name    = project["cohort_specs"][0]["table_name_for_extraction"]
+            ,checks        = project["cohort_specs"][0]["db_fields_for_extraction"]
+            ,src           = project["cohort_specs"][0]["lnk_src"]
+            ,src_keys      = project["cohort_specs"][0]["lnk_src_keys"]
+            ,src_keys      = project["checks"]
             ,insert_into_table_name = project["cohort_specs"][0]["insert_into_table_name"]
             )
 
- 
+
 # Closing file
 f.close()
 
