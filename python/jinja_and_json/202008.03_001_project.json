@@ -19,11 +19,12 @@
             {"field_name":"DiagnosisDate", "value":"19840101", "field_data_type":"date"  ,"is_list":"FALSE", "condition_type":">="  }
            ,{"field_name":"DiagnosisDate", "value":"20230331", "field_data_type":"date"  ,"is_list":"FALSE", "condition_type":"<="  }
            ,{"field_name":"CancerType"   , "value":["C56","C48.1","C48.2","C48.8","C57"]
-                                                                  , "field_data_type":"string","is_list":"TRUE"  , "condition_type":"like"}
+                                                             , "field_data_type":"string","is_list":"TRUE"  , "condition_type":"like"}
             ],
            "checks": [
               {"chk_col":"DiagnosisDate","field_data_type":"date"  ,"chk_type":"freq_analysis"}
-             ,{"chk_col":"DiagnosisDate","field_data_type":"date"  ,"chk_type":"min_max"}
+             ,{"chk_col":"DiagnosisDate","field_data_type":"date"  ,"chk_type":"min"}
+             ,{"chk_col":"DiagnosisDate","field_data_type":"date"  ,"chk_type":"max"}
              ,{"chk_col":"CancerType"   ,"field_data_type":"string","chk_type":"freq_analysis"}
              ,{"chk_col":"Sex"          ,"field_data_type":"string","chk_type":"freq_analysis"}
             ]

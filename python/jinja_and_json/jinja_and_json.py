@@ -114,7 +114,7 @@ env = Environment(loader=FileSystemLoader('templates'), lstrip_blocks=True,trim_
 #             )
 
 # QA Checks
-template = env.get_template('data_extract_sql.txt')
+template = env.get_template('checks_sql.txt')
 output = template.render(
              proj_id       = project["id"]
             ,proj_no       = project["proj_no"]
@@ -123,10 +123,9 @@ output = template.render(
             ,princ_invest  = project["princ_invest"]
             ,cohort_name   = project["cohort_specs"][0]["name"]
             ,table_name    = project["cohort_specs"][0]["table_name_for_extraction"]
-            ,checks        = project["cohort_specs"][0]["db_fields_for_extraction"]
+            ,check         = project["cohort_specs"][0]["checks"][1]
             ,src           = project["cohort_specs"][0]["lnk_src"]
             ,src_keys      = project["cohort_specs"][0]["lnk_src_keys"]
-            ,src_keys      = project["checks"]
             ,insert_into_table_name = project["cohort_specs"][0]["insert_into_table_name"]
             )
 

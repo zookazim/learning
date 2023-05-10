@@ -87,4 +87,12 @@ SELECT {%- for value in columns %}
     {%- endfor -%}
 
 {%- endblock where_clause -%}
+{#
+
+-- GROUPBY Statement
+
+#}
+{% block groupby_clause %}
+{% endblock groupby_clause %}
+
 {# -- End MAIN ---------------------------------------- #}

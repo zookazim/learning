@@ -15,16 +15,30 @@
 
 {%- block title %}
 ----------------------------------------------------
--- QA Checking : {{ chk_col }} ({{ chk_type }})
+-- QA Checking : {{ check['chk_col'] }} ({{ check['chk_type'] }})
 {% endblock title %}
 
 {%- block select -%}
 
-SELECT {{ sql_macros.add_quotes(proj_id,'string') }}  as proj_id,
-       {%- for value in columns %}                 
-       {{ value }}
-       {%- if not loop.last -%}, {% endif -%}       
-       {% endfor %}
+SELECT '{{ proj_id }}'    as proj_id,
+       '{{ src }}'    as src,
+       '{{ cohort_name }}'    as cohort_name,
+       '{{ check['chk_type'] }}'    as check_type,
+       '{{ check['chk_col'] }}'    as check_col,
+       {% if ( check['chk_type'] == 'min' ) %}
+       min({{ check['chk_col'] }}) as check_value,
+       {% endif %}
+       {% if ( check['chk_type'] == 'max' ) %}  
+       max({{ check['chk_col'] }}) as check_value,
+       {% endif %}
+       {% if ( check['chk_type'] == 'freq_analysis' ) -%}  
+         {# Data type will affect how the groupby is handled #}
+         {%- if ( check['field_data_type'] == 'date' ) %}  
+       year( {{ check['chk_col'] }} ) as check_group,
+         {% endif %}
+       count(*) as check_value,
+       {% endif %}
+
 {% endblock select %}
 
 {% block from %}
@@ -32,22 +46,32 @@ SELECT {{ sql_macros.add_quotes(proj_id,'string') }}  as proj_id,
      to the data collection table using
      the lnk_src_key
    #}
-  FROM PRJ.CohortSelect coh 
-  JOIN {{ table_name }} dat
-    ON coh.lnk_src      = dat.{{ lnk_src }}
-       {%- for value in columns %}                 
-       {{ value }} as lnk_src_key{{loop.index}}    {# Add linkage src_key - could be more than one #}
+  FROM {{ table_name }} dat
+  JOIN PRJ.CohortSelect coh 
+    ON {%- for value in src_keys %} 
+       dat.{{ value }} = coh.lnk_src_key{{loop.index}}    {# Add linkage src_key - could be more than one #}
        {%- if not loop.last -%}, {% endif -%}       
        {% endfor %}
 
 {% endblock from %}
 
 {% block where_clause %}
- WHERE coh.proj_id     = {{ proj_id }}
-   AND coh.cohort_name = {{ cohort_name }}
+
+ WHERE coh.proj_id     = '{{ proj_id }}'
+   AND coh.lnk_src     = '{{ src }}'
+   AND coh.cohort_name = '{{ cohort_name }}'
+
 {%- endblock where_clause %}
 
 {% block groupby_clause %}
+ 
+   {% if ( check['chk_type'] == 'freq_analysis' ) %}  
  GROUP BY 
-
+     {# Data type will affect how the groupby is handled #}
+     {%- if ( check['field_data_type'] == 'date' ) %}  
+       year( {{ check['chk_col'] }} )
+     {%- else %}
+       {{ check['chk_col'] }}
+     {% endif %}
+   {% endif %}
 {%- endblock groupby_clause %}
