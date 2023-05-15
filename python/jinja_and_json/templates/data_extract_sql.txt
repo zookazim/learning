@@ -21,7 +21,7 @@
 
 {%- block select -%}
 
-SELECT {{ sql_macros.add_quotes(proj_id,'string') }}  as proj_id,
+SELECT {{ sql_macros.add_quotes(coh_id,'string') }}  as coh_id,
        {%- for value in columns %}                 
        {{ value }}
        {%- if not loop.last -%}, {% endif -%}       

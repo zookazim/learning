@@ -20,7 +20,7 @@
 
 {%- block select -%}
 
-SELECT '{{ proj_id }}'    as proj_id,
+SELECT '{{ coh_id }}'    as coh_id,
        '{{ src }}'    as src,
        '{{ cohort_name }}'    as cohort_name,
        '{{ check['chk_type'] }}'    as check_type,
@@ -57,7 +57,7 @@ SELECT '{{ proj_id }}'    as proj_id,
 
 {% block where_clause %}
 
- WHERE coh.proj_id     = '{{ proj_id }}'
+ WHERE coh.coh_id      = '{{ coh_id }}'
    AND coh.lnk_src     = '{{ src }}'
    AND coh.cohort_name = '{{ cohort_name }}'
 

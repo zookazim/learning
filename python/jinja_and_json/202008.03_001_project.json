@@ -8,6 +8,7 @@
     "princ_invest": "Prof Penelope Webb",
     "cohort_specs": [
           {
+          "id":1234,
           "name":"cohort_a",          
           "description":"All individuals diagnosed with invasive ovarian cancer (including fallopian tube and primary peritoneal cancers) from 1/1/1984 to latest available (including children). ICD Codes (Principal diagnosis): C56 (ovarian cancer),C48.1, C48.2, C48.8 (primary peritoneal cancer),C57 (fallopian tube or other adnexal cancers)",
           "dat_name": "canc",

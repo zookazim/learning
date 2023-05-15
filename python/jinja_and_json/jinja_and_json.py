@@ -76,6 +76,7 @@ env = Environment(loader=FileSystemLoader('templates'), lstrip_blocks=True,trim_
 #             ,task_no       = project["task_no"]
 #             ,proj_title    = project["proj_title"]
 #             ,princ_invest  = project["princ_invest"]
+#             ,coh_id        = project["cohort_specs"][0]["id"]
 #             ,table_name    = project["cohort_specs"][0]["table_name_for_extraction"]
 #             ,columns       = project["cohort_specs"][0]["lnk_src_keys"]
 #             ,src           = project["cohort_specs"][0]["lnk_src"]
@@ -91,6 +92,7 @@ env = Environment(loader=FileSystemLoader('templates'), lstrip_blocks=True,trim_
 #             ,task_no       = project["task_no"]
 #             ,proj_title    = project["proj_title"]
 #             ,princ_invest  = project["princ_invest"]
+#             ,coh_id        = project["cohort_specs"][0]["id"]
 #             ,table_name    = project["cohort_specs"][0]["table_name_for_extraction"]
 #             ,columns       = project["cohort_specs"][0]["lnk_src_keys"]
 #             ,src           = project["cohort_specs"][0]["lnk_src"]
@@ -106,6 +108,7 @@ env = Environment(loader=FileSystemLoader('templates'), lstrip_blocks=True,trim_
 #             ,task_no       = project["task_no"]
 #             ,proj_title    = project["proj_title"]
 #             ,princ_invest  = project["princ_invest"]
+#             ,coh_id        = project["cohort_specs"][0]["id"]
 #             ,table_name    = project["dataset_specs"][0]["table_name_for_extraction"]
 #             ,columns       = project["dataset_specs"][0]["db_fields_for_extraction"]
 #             ,src           = project["dataset_specs"][0]["lnk_src"]
@@ -115,19 +118,22 @@ env = Environment(loader=FileSystemLoader('templates'), lstrip_blocks=True,trim_
 
 # QA Checks
 template = env.get_template('checks_sql.txt')
-output = template.render(
-             proj_id       = project["id"]
-            ,proj_no       = project["proj_no"]
-            ,task_no       = project["task_no"]
-            ,proj_title    = project["proj_title"]
-            ,princ_invest  = project["princ_invest"]
-            ,cohort_name   = project["cohort_specs"][0]["name"]
-            ,table_name    = project["cohort_specs"][0]["table_name_for_extraction"]
-            ,check         = project["cohort_specs"][0]["checks"][1]
-            ,src           = project["cohort_specs"][0]["lnk_src"]
-            ,src_keys      = project["cohort_specs"][0]["lnk_src_keys"]
-            ,insert_into_table_name = project["cohort_specs"][0]["insert_into_table_name"]
-            )
+for cohort_spec in project["cohort_specs"]:
+    for cohort_check in cohort_spec["checks"]:
+        output = template.render(
+                    proj_id       = project["id"]
+                    ,proj_no       = project["proj_no"]
+                    ,task_no       = project["task_no"]
+                    ,proj_title    = project["proj_title"]
+                    ,princ_invest  = project["princ_invest"]
+                    ,coh_id        = project["cohort_specs"][0]["id"]
+                    ,cohort_name   = project["cohort_specs"][0]["name"]
+                    ,table_name    = project["cohort_specs"][0]["table_name_for_extraction"]
+                    ,check         = project["cohort_specs"][0]["checks"][3]
+                    ,src           = project["cohort_specs"][0]["lnk_src"]
+                    ,src_keys      = project["cohort_specs"][0]["lnk_src_keys"]
+                    ,insert_into_table_name = project["cohort_specs"][0]["insert_into_table_name"]
+                    )
 
 
 # Closing file

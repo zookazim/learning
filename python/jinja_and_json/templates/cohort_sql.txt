@@ -21,11 +21,11 @@
 {%- block select -%}
 INSERT INTO PRJ.Cohort
        (
-         proj_id,
+         coh_id,
          chain_id
        ) 
 
-SELECT {{ sql_macros.add_quotes(proj_id,'string') }}  as proj_id,
+SELECT {{ sql_macros.add_quotes(coh_id,'string') }}  as coh_id,
        chain_id as chain_id
 {% endblock select %}
 

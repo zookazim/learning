@@ -22,7 +22,7 @@
 {%- block select -%}
 INSERT INTO {{ insert_into_table_name }}
        (
-         proj_id,
+         coh_id,
          lnk_src,
          {%- for value in columns %}                 
          lnk_src_key{{loop.index}}    {# Add linkage src_key - could be more than one #}
@@ -30,7 +30,7 @@ INSERT INTO {{ insert_into_table_name }}
          {% endfor %}
        )
 
-SELECT {{ sql_macros.add_quotes(proj_id,'string') }}  as proj_id,
+SELECT {{ sql_macros.add_quotes(coh_id,'string') }}  as coh_id,
        {{ sql_macros.add_quotes(src,'string') }}  as lnk_src, {# Add linkage key source name #}
        {%- for value in columns %}                 
        {{ value }} as lnk_src_key{{loop.index}}    {# Add linkage src_key - could be more than one #}
