@@ -22,18 +22,18 @@
 {%- block select -%}
 INSERT INTO {{ insert_into_table_name }}
        (
-         coh_id,
-         lnk_src,
+         CohId,
+         LnkSrc,
          {%- for value in columns %}                 
-         lnk_src_key{{loop.index}}    {# Add linkage src_key - could be more than one #}
+         LnkSrcKey{{loop.index}}    {# Add linkage src_key - could be more than one #}
          {%- if not loop.last -%}, {% endif %} 
          {% endfor %}
        )
 
-SELECT {{ sql_macros.add_quotes(coh_id,'string') }}  as coh_id,
-       {{ sql_macros.add_quotes(src,'string') }}  as lnk_src, {# Add linkage key source name #}
+SELECT {{ sql_macros.add_quotes(coh_id,'string') }}  as CohId,
+       {{ sql_macros.add_quotes(src,'string') }}  as LnkSrc, {# Add linkage key source name #}
        {%- for value in columns %}                 
-       {{ value }} as lnk_src_key{{loop.index}}    {# Add linkage src_key - could be more than one #}
+       {{ value }} as LnkSrcKey{{loop.index}}    {# Add linkage src_key - could be more than one #}
        {%- if not loop.last -%}, {% endif -%}       
        {% endfor %}
 {% endblock select %}

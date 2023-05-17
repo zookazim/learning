@@ -20,8 +20,8 @@
 
 {%- block select -%}
 
-SELECT '{{ coh_id }}'    as coh_id,
-       '{{ src }}'    as src,
+SELECT '{{ coh_id }}'    as CohId,
+       '{{ src }}'    as Src,
        '{{ cohort_name }}'    as cohort_name,
        '{{ check['chk_type'] }}'    as check_type,
        '{{ check['chk_col'] }}'    as check_col,
@@ -57,7 +57,7 @@ SELECT '{{ coh_id }}'    as coh_id,
 
 {% block where_clause %}
 
- WHERE coh.coh_id      = '{{ coh_id }}'
+ WHERE coh.CohId      = '{{ CohId }}'
    AND coh.lnk_src     = '{{ src }}'
    AND coh.cohort_name = '{{ cohort_name }}'
 

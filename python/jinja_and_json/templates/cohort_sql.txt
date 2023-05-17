@@ -21,25 +21,25 @@
 {%- block select -%}
 INSERT INTO PRJ.Cohort
        (
-         coh_id,
-         chain_id
+         CohId,
+         ChainId
        ) 
 
-SELECT {{ sql_macros.add_quotes(coh_id,'string') }}  as coh_id,
-       chain_id as chain_id
+SELECT {{ sql_macros.add_quotes(coh_id,'string') }}  as CohId,
+       chain_id as ChainId
 {% endblock select %}
 
 {% block from %}
 
   FROM PRJ.CohortSelect coh
   JOIN DW_Transformed.LNK.LinkageKeys lnk 
-    ON coh.lnk_src      = lnk.src
-   AND coh.lnk_src_key1 = lnk.lnk_src_key1
-   AND coh.lnk_src_key2 = lnk.lnk_src_key2
-   AND coh.lnk_src_key3 = lnk.lnk_src_key3      
+    ON coh.LnkSrc     = lnk.src
+   AND coh.LnkSrcKey1 = lnk.lnk_src_key1
+   AND coh.LnkSrcKey2 = lnk.lnk_src_key2
+   AND coh.LnkSrcKey3 = lnk.lnk_src_key3
 
 {% endblock from %}
- 
+
 {% block where_clause %}
- WHERE coh.proj_id = {{ proj_id }}
+ WHERE coh.CohId = {{ coh_id }}
 {%- endblock where_clause %}
