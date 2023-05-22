@@ -37,3 +37,8 @@ https://learn.microsoft.com/en-GB/azure/azure-functions/create-first-function-vs
 https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-http-webhook-trigger?pivots=programming-language-python&tabs=python-v2%2Cin-process%2Cfunctionsv2
 
 
+## Useful Videos
+
+* [VS Code to build, test and deploy a Python function](https://www.youtube.com/watch?v=HCqe49vero0)
+
+* [VS Code to build, test and deploy a Python function (brief version)](https://www.youtube.com/watch?v=purnuD_MId4)

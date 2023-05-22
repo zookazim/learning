@@ -4,6 +4,9 @@
 
 * Exam Study guide https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4MbYT
 
+
+* Practice Exam https://learn.microsoft.com/en-us/certifications/exams/dp-203/practice/assessment?assessment-type=practice&assessmentId=49&source=docs
+
 ## Courses
 
 * Microsoft Learn https://learn.microsoft.com/en-gb/training/courses/dp-203t00
