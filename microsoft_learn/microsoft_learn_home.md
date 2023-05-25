@@ -1,0 +1,14 @@
+# Microsoft Azure Learning
+
+[Azure Data Lake Storage](azure_data_lake_storage_gen2.md)
+
+[Azure Synapse](azure_synapse_analytics.md)
+
+[Azure Synapse - Serverless SQL Pools](azure_synapse_serverless_sql_pools.md)
+
+
+
+## Exams
+
+[DP-203 : Data Engineer](dp_203_data_engineer.md)
+

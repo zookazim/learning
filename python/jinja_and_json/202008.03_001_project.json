@@ -23,11 +23,12 @@
                                                              , "field_data_type":"string","is_list":"TRUE"  , "condition_type":"like"}
             ],
            "checks": [
-              {"chk_col":"DiagnosisDate","field_data_type":"date"  ,"chk_type":"freq_analysis"}
+              {"chk_col":"DiagnosisDate","field_data_type":"date"  ,"chk_type":"frequency"}
              ,{"chk_col":"DiagnosisDate","field_data_type":"date"  ,"chk_type":"min"}
              ,{"chk_col":"DiagnosisDate","field_data_type":"date"  ,"chk_type":"max"}
-             ,{"chk_col":"CancerType"   ,"field_data_type":"string","chk_type":"freq_analysis"}
-             ,{"chk_col":"Sex"          ,"field_data_type":"string","chk_type":"freq_analysis"}
+             ,{"chk_col":"CancerType"   ,"field_data_type":"string","chk_type":"frequency"}
+             ,{"chk_col":"Sex"          ,"field_data_type":"string","chk_type":"frequency"}
+             ,{"chk_col":""             ,"field_data_type":"numeric","chk_type":"total_count"}
             ]
           }
         ]

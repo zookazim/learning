@@ -34,12 +34,16 @@ SELECT {{ sql_macros.add_quotes(coh_id,'string') }}  as CohId,
   FROM PRJ.CohortSelect coh
   JOIN DW_Transformed.LNK.LinkageKeys lnk 
     ON coh.LnkSrc     = lnk.src
-   AND coh.LnkSrcKey1 = lnk.lnk_src_key1
-   AND coh.LnkSrcKey2 = lnk.lnk_src_key2
-   AND coh.LnkSrcKey3 = lnk.lnk_src_key3
+    {# Add in the LnkSrcKey1 -> LnkSrcKey3 as required #}
+   {%- for value in columns %}
+   AND coh.LnkSrcKey{{ loop.index }} = lnk.src_key_{{ loop.index }}
+   {%- if not loop.last -%}, {% endif %}
+   {% endfor %}
 
 {% endblock from %}
 
 {% block where_clause %}
+
  WHERE coh.CohId = {{ coh_id }}
+
 {%- endblock where_clause %}

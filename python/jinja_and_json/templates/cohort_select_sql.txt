@@ -32,8 +32,8 @@ INSERT INTO {{ insert_into_table_name }}
 
 SELECT {{ sql_macros.add_quotes(coh_id,'string') }}  as CohId,
        {{ sql_macros.add_quotes(src,'string') }}  as LnkSrc, {# Add linkage key source name #}
-       {%- for value in columns %}                 
+       {%- for value in columns %}
        {{ value }} as LnkSrcKey{{loop.index}}    {# Add linkage src_key - could be more than one #}
-       {%- if not loop.last -%}, {% endif -%}       
+       {%- if not loop.last -%}, {% endif -%}
        {% endfor %}
 {% endblock select %}

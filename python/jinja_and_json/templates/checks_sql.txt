@@ -13,6 +13,28 @@
 {# The cohort selection builds on the base_sql template#}
 {% extends 'base_sql.txt' %}
 
+{#
+   -- Macros ------------------------------------ 
+#}
+
+{#  Macro to return name of appropriate field to store check result #}
+
+{%- macro result_field_name(var_type, chk_type) -%}
+  {% if chk_type =='frequency' -%}
+    CheckResultNum
+  {%- elif var_type == 'string' -%}
+    CheckResultChar
+  {%- elif var_type == 'date' -%}
+    CheckResultDate
+  {%- elif var_type == 'numeric' -%}
+    CheckResultNum
+  {%- endif -%}
+{%- endmacro -%}
+
+{# 
+   -- MAIN ---------------------------------------- 
+#}
+
 {%- block title %}
 ----------------------------------------------------
 -- QA Checking : {{ check['chk_col'] }} ({{ check['chk_type'] }})
@@ -20,36 +42,52 @@
 
 {%- block select -%}
 
+INSERT INTO PRJ.CheckResults
+       (
+         CohId,
+         LnkSrc,
+         CheckType,
+         CheckCol,
+         CheckGrouping,
+         {{ result_field_name(check['field_data_type'],check['chk_type']) }}
+       )
+
 SELECT '{{ coh_id }}'    as CohId,
        '{{ src }}'    as Src,
-       '{{ cohort_name }}'    as cohort_name,
-       '{{ check['chk_type'] }}'    as check_type,
-       '{{ check['chk_col'] }}'    as check_col,
-       {% if ( check['chk_type'] == 'min' ) %}
-       min({{ check['chk_col'] }}) as check_value,
-       {% endif %}
-       {% if ( check['chk_type'] == 'max' ) %}  
-       max({{ check['chk_col'] }}) as check_value,
-       {% endif %}
-       {% if ( check['chk_type'] == 'freq_analysis' ) -%}  
+       '{{ check['chk_type'] }}'    as CheckType,
+       '{{ check['chk_col'] }}'    as CheckCol,
+       {%- if ( check['chk_type'] == 'min' ) %}
+       NULL as CheckGrouping,
+       min({{ check['chk_col'] }}) as {{ result_field_name(check['field_data_type'],check['chk_type']) }}
+       {%- elif ( check['chk_type'] == 'max' ) %}  
+       NULL as CheckGrouping,
+       max({{ check['chk_col'] }}) as {{ result_field_name(check['field_data_type'],check['chk_type']) }}
+       {%- elif ( check['chk_type'] == 'total_count' ) %}
+       NULL as CheckGrouping,
+       count(*) as total_count
+       {# If freq analysis then need grouping value stored #}
+       {% elif ( check['chk_type'] == 'frequency' ) %}  
          {# Data type will affect how the groupby is handled #}
-         {%- if ( check['field_data_type'] == 'date' ) %}  
-       year( {{ check['chk_col'] }} ) as check_group,
+         {% if ( check['field_data_type'] == 'date' ) %}  
+         year( {{ check['chk_col'] }} ) as CheckGrouping,
+         {%- else %}
+         {{ check['chk_col'] }}  as CheckGrouping,
          {% endif %}
-       count(*) as check_value,
+         count(*) as {{ result_field_name(check['field_data_type'],check['chk_type']) }}
        {% endif %}
+
 
 {% endblock select %}
 
 {% block from %}
   {# The cohort selection records are joined
      to the data collection table using
-     the lnk_src_key
+     the LnkSrcKey
    #}
   FROM {{ table_name }} dat
   JOIN PRJ.CohortSelect coh 
     ON {%- for value in src_keys %} 
-       dat.{{ value }} = coh.lnk_src_key{{loop.index}}    {# Add linkage src_key - could be more than one #}
+       dat.{{ value }} = coh.LnkSrcKey{{loop.index}}    {# Add linkage src_key - could be more than one #}
        {%- if not loop.last -%}, {% endif -%}       
        {% endfor %}
 
@@ -57,15 +95,14 @@ SELECT '{{ coh_id }}'    as CohId,
 
 {% block where_clause %}
 
- WHERE coh.CohId      = '{{ CohId }}'
-   AND coh.lnk_src     = '{{ src }}'
-   AND coh.cohort_name = '{{ cohort_name }}'
+ WHERE coh.CohId      = '{{ coh_id }}'
+   AND coh.LnkSrc     = '{{ src }}'
 
 {%- endblock where_clause %}
 
 {% block groupby_clause %}
  
-   {% if ( check['chk_type'] == 'freq_analysis' ) %}  
+   {% if ( check['chk_type'] == 'frequency' ) %}  
  GROUP BY 
      {# Data type will affect how the groupby is handled #}
      {%- if ( check['field_data_type'] == 'date' ) %}  

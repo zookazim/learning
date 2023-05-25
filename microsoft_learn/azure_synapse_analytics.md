@@ -2,6 +2,10 @@
 
 ## What is Azure Synapse
 
+![Azure Synapse Analytics](images/synapse_what_is_it.png)
+
+## What can it do?
+
 Azure Synapse can provide solutions for all of the following types of analytics;
 
 * **Descriptive Analytics** : Analysis of historical data typically in a data warehouse (What is happening)
