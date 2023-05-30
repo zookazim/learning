@@ -69,7 +69,27 @@ env = Environment(loader=FileSystemLoader('templates'), lstrip_blocks=True,trim_
 
 
 #Cohort selection
-# template = env.get_template('cohort_select_sql.txt')
+template = env.get_template('cohort_select_sql.txt')
+# Loop through cohorts
+for cohort_spec in project["cohort_specs"]:
+    output = template.render(
+                proj_id       = project["id"]
+                ,proj_no       = project["proj_no"]
+                ,task_no       = project["task_no"]
+                ,proj_title    = project["proj_title"]
+                ,princ_invest  = project["princ_invest"]
+                ,coh_id        = cohort_spec["id"]
+                ,table_name    = cohort_spec["table_name_for_extraction"]
+                ,columns       = cohort_spec["lnk_src_keys"]
+                ,src           = cohort_spec["lnk_src"]
+                ,where_clauses = cohort_spec["criteria"]
+                ,insert_into_table_name = cohort_spec["insert_into_table_name"]
+                )
+    
+    print(output)
+
+# Cohort list
+# template = env.get_template('cohort_sql.txt')
 # output = template.render(
 #              proj_id       = project["id"]
 #             ,proj_no       = project["proj_no"]
@@ -83,24 +103,25 @@ env = Environment(loader=FileSystemLoader('templates'), lstrip_blocks=True,trim_
 #             ,where_clauses = project["cohort_specs"][0]["criteria"]
 #             ,insert_into_table_name = project["cohort_specs"][0]["insert_into_table_name"]
 #             )
+# print(output)
 
-# Cohort list
 
 # Extraction of data
-template = env.get_template('data_extract_sql.txt')
-output = template.render(
-             proj_id       = project["id"]
-            ,proj_no       = project["proj_no"]
-            ,task_no       = project["task_no"]
-            ,proj_title    = project["proj_title"]
-            ,princ_invest  = project["princ_invest"]
-            ,coh_id        = project["cohort_specs"][0]["id"]
-            ,table_name    = project["dataset_specs"][0]["table_name_for_extraction"]
-            ,columns       = project["dataset_specs"][0]["db_fields_for_extraction"]
-            ,src           = project["dataset_specs"][0]["lnk_src"]
-            ,src_keys      = project["dataset_specs"][0]["lnk_src_keys"]
-            ,insert_into_table_name = project["cohort_specs"][0]["insert_into_table_name"]
-            )
+# template = env.get_template('data_extract_sql.txt')
+# output = template.render(
+#              proj_id       = project["id"]
+#             ,proj_no       = project["proj_no"]
+#             ,task_no       = project["task_no"]
+#             ,proj_title    = project["proj_title"]
+#             ,princ_invest  = project["princ_invest"]
+#             ,coh_id        = project["cohort_specs"][0]["id"]
+#             ,table_name    = project["dataset_specs"][0]["table_name_for_extraction"]
+#             ,columns       = project["dataset_specs"][0]["db_fields_for_extraction"]
+#             ,src           = project["dataset_specs"][0]["lnk_src"]
+#             ,src_keys      = project["dataset_specs"][0]["lnk_src_keys"]
+#             ,insert_into_table_name = project["cohort_specs"][0]["insert_into_table_name"]
+#             )
+# print(output)
 
 # QA Checks
 # template = env.get_template('checks_sql.txt')
@@ -125,7 +146,6 @@ output = template.render(
 
 #         print(output)
 
-print(output)
 
 
 # Closing file

@@ -12,13 +12,13 @@
           "name":"cohort_a",          
           "description":"All individuals diagnosed with invasive ovarian cancer (including fallopian tube and primary peritoneal cancers) from 1/1/1984 to latest available (including children). ICD Codes (Principal diagnosis): C56 (ovarian cancer),C48.1, C48.2, C48.8 (primary peritoneal cancer),C57 (fallopian tube or other adnexal cancers)",
           "dat_name": "canc",
-          "table_name_for_extraction" : "dw_transformed.WACR.CancerMasterfile",
+          "table_name_for_extraction" : "DW_Research_Outputs.WACR.Vw_Cancer",
           "insert_into_table_name":"DW_Research_Outputs.PRJ.CohortSelect",
           "lnk_src_keys": ["TumourID"],
           "lnk_src":"CANC",
           "criteria": [
             {"field_name":"DiagnosisDate", "value":"19840101", "field_data_type":"date"  ,"is_list":"FALSE", "condition_type":">="  }
-           ,{"field_name":"DiagnosisDate", "value":"20230331", "field_data_type":"date"  ,"is_list":"FALSE", "condition_type":"<="  }
+           ,{"field_name":"DiagnosisDate", "value":"20231231", "field_data_type":"date"  ,"is_list":"FALSE", "condition_type":"<="  }
            ,{"field_name":"CancerType"   , "value":["C56","C48.1","C48.2","C48.8","C57"]
                                                              , "field_data_type":"string","is_list":"TRUE"  , "condition_type":"like"}
             ],
@@ -30,6 +30,32 @@
              ,{"chk_col":"Sex"          ,"field_data_type":"string","chk_type":"frequency"}
              ,{"chk_col":""             ,"field_data_type":"numeric","chk_type":"total_count"}
             ]
+          }
+         ,{
+            "id":1235,
+            "name":"cohort_b",          
+            "description":"All individuals diagnosed with a borderline ovarian tumour from 1/1/1984 to latest available to be identified via the WA cancer registry (including children)",
+            "dat_name": "canc",
+            "table_name_for_extraction" : "DW_Research_Outputs.WACR.Vw_Cancer",
+            "insert_into_table_name":"DW_Research_Outputs.PRJ.CohortSelect",
+            "lnk_src_keys": ["TumourID"],
+            "lnk_src":"CANC",
+            "criteria": [
+              {"field_name":"DiagnosisDate", "value":"19840101", "field_data_type":"date"  ,"is_list":"FALSE", "condition_type":">="  }
+             ,{"field_name":"DiagnosisDate", "value":"20231231", "field_data_type":"date"  ,"is_list":"FALSE", "condition_type":"<="  }
+             ,{"field_name":"CancerType"   , "value":["C56","C48.1","C48.2","C48.8","C57"]
+                                                               , "field_data_type":"string","is_list":"TRUE"  , "condition_type":"like"}
+             ,{"field_name":"Behaviour"    , "value":"1"       , "field_data_type":"string","is_list":"FALSE"  , "condition_type":"="}
+              ],
+             "checks": [
+                {"chk_col":"DiagnosisDate","field_data_type":"date"   ,"chk_type":"frequency"}
+               ,{"chk_col":"DiagnosisDate","field_data_type":"date"   ,"chk_type":"min"}
+               ,{"chk_col":"DiagnosisDate","field_data_type":"date"   ,"chk_type":"max"}
+               ,{"chk_col":"CancerType"   ,"field_data_type":"string" ,"chk_type":"frequency"}
+               ,{"chk_col":"Sex"          ,"field_data_type":"string" ,"chk_type":"frequency"}
+               ,{"chk_col":"Behaviour"    ,"field_data_type":"string" ,"chk_type":"frequency"}
+               ,{"chk_col":""             ,"field_data_type":"numeric","chk_type":"total_count"}
+              ]
           }
         ]
       ,
