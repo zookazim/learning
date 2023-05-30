@@ -1,5 +1,7 @@
 # Microsoft Azure Learning
 
+[Azure Storage Services]()
+
 [Azure Data Lake Storage](azure_data_lake_storage_gen2.md)
 
 [Azure Synapse](azure_synapse_analytics.md)
