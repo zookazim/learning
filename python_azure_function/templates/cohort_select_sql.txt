@@ -1,0 +1,39 @@
+{# -----------------------------  
+   Jinja Template File
+   -----------------------------
+   Name   : Cohort Selection Template
+   Author : DaveB
+   Date   : April 2023
+   -----------------------------
+   Puts together all the template
+   blocks required for a cohort 
+   selection SQL statement
+   -----------------------------
+#}
+
+{# The cohort selection builds on the base_sql template#}
+{% extends 'base_sql.txt' %}
+
+{%- block title %}
+----------------------------------------------------
+-- Cohort Selection
+{% endblock title %}
+
+{%- block select -%}
+INSERT INTO {{ insert_into_table_name }}
+       (
+         CohId,
+         LnkSrc,
+         {%- for value in columns %}                 
+         LnkSrcKey{{loop.index}}    {# Add linkage src_key - could be more than one #}
+         {%- if not loop.last -%}, {% endif %} 
+         {% endfor %}
+       )
+
+SELECT {{ sql_macros.add_quotes(coh_id,'string') }}  as CohId,
+       {{ sql_macros.add_quotes(src,'string') }}  as LnkSrc, {# Add linkage key source name #}
+       {%- for value in columns %}
+       {{ value }} as LnkSrcKey{{loop.index}}    {# Add linkage src_key - could be more than one #}
+       {%- if not loop.last -%}, {% endif -%}
+       {% endfor %}
+{% endblock select %}
