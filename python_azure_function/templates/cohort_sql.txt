@@ -1,0 +1,49 @@
+{# -----------------------------  
+   Jinja Template File
+   -----------------------------
+   Name   : Cohort Template
+   Author : DaveB
+   Date   : April 2023
+   -----------------------------
+   Statement to define the cohort
+   with chain_id
+   -----------------------------
+#}
+
+{# The cohort listing builds on the base_sql template#}
+{% extends 'base_sql.txt' %}
+
+{%- block title %}
+----------------------------------------------------
+-- Cohort Listing
+{% endblock title %}
+
+{%- block select -%}
+INSERT INTO PRJ.Cohort
+       (
+         CohId,
+         ChainId
+       ) 
+
+SELECT {{ sql_macros.add_quotes(coh_id,'string') }}  as CohId,
+       chain_id as ChainId
+{% endblock select %}
+
+{% block from %}
+
+  FROM PRJ.CohortSelect coh
+  JOIN DW_Transformed.LNK.LinkageKeys lnk 
+    ON coh.LnkSrc     = lnk.src
+    {# Add in the LnkSrcKey1 -> LnkSrcKey3 as required #}
+   {%- for value in columns %}
+   AND coh.LnkSrcKey{{ loop.index }} = lnk.src_key_{{ loop.index }}
+   {%- if not loop.last -%}, {% endif %}
+   {% endfor %}
+
+{% endblock from %}
+
+{% block where_clause %}
+
+ WHERE coh.CohId = {{ coh_id }}
+
+{%- endblock where_clause %}

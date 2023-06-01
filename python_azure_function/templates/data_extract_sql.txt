@@ -1,0 +1,50 @@
+{# -----------------------------  
+   Jinja Template File
+   -----------------------------
+   Name   : Dataset Extraction Template
+   Author : DaveB
+   Date   : May 2023
+   -----------------------------
+   Puts together all the template
+   blocks required for a cohort 
+   selection SQL statement
+   -----------------------------
+#}
+
+{# The cohort selection builds on the base_sql template#}
+{% extends 'base_sql.txt' %}
+
+{%- block title %}
+----------------------------------------------------
+-- Dataset Extraction
+{% endblock title %}
+
+{%- block select -%}
+
+SELECT {{ sql_macros.add_quotes(coh_id,'string') }}  as coh_id,
+       {%- for value in columns %}                 
+       {{ value }}
+       {%- if not loop.last -%}, {% endif -%}       
+       {% endfor %}
+{% endblock select %}
+
+{% block from %}
+
+  FROM PRJ.Cohort coh
+  JOIN DW_Transformed.LNK.LinkageKeys lnk 
+        ON coh.lnk_src      = lnk.src
+       AND coh.lnk_src_key1 = coh.lnk_src_key1
+       AND coh.lnk_src_key2 = coh.lnk_src_key2
+       AND coh.lnk_src_key3 = coh.lnk_src_key3   
+  JOIN {{ table_name }} dat
+       {% for value in src_keys %}     
+         {%- if loop.first %}        ON {% else %}       AND {% endif -%}            
+           lnk.lnk_src_key{{loop.index}} = dat.{{ value }}
+         {%- if not loop.last -%}, {% endif %}       
+       {% endfor %}
+
+{% endblock from %}
+
+{% block where_clause %}
+ WHERE 1 = 1
+{%- endblock where_clause %}

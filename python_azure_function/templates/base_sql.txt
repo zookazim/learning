@@ -1,0 +1,98 @@
+{# -----------------------------  
+   Jinja Template File
+   -----------------------------
+   Name   : Cohort selection SQL
+   Author : DaveB
+   Date   : April 2023
+   -----------------------------
+   Use this template to create the 
+   complete cohort selection sql.
+   It contains multiple child template
+   to minimise code duplication
+   and maintenance
+   -----------------------------
+#}
+
+{# 
+   -- Macros ------------------------------------ 
+#}
+{% import 'template_macros.txt' as sql_macros %}
+{#  
+  -- MAIN ------------------------------------ 
+#}
+{#
+-- Header  
+#}
+{% block title %}
+----------------------------------------------------
+-- Base SQL Statement
+{% endblock title %}
+{% block header %}
+----------------------------------------------------
+-- Proj ID : {{ id }}
+-- Proj No : {{ proj_no }}
+-- Task No : {{ task_no }}
+-- Title   : {{ proj_title }}
+-- Principle Investigator: {{ princ_invest }}
+----------------------------------------------------
+{% endblock header %}
+{#
+-- SELECT statement 
+#}
+{%- block select -%}
+
+SELECT {%- for value in columns %}                 
+       {{ value }}
+       {%- if not loop.last -%}, {% endif -%}       
+       {% endfor %}
+{% endblock select %}
+{#
+
+-- FROM Statement
+
+#}
+{% block from %}
+
+
+  FROM {{ table_name }}
+
+{% endblock from %}
+{#
+
+-- WHERE Statement
+
+#}
+{%- block where_clause %}
+ WHERE
+    {%- for clause in where_clauses %}
+    {# Add 'and' for new lines except the first one #}
+    {% if not loop.first %}   AND {% else %} {% endif -%}
+        {# 'or' listing #}
+        {%- if (clause['is_list'] == 'TRUE') and (clause['condition_type'] == '=')  -%} 
+          {# use create_or_list macro to build up statement #}
+          {{ sql_macros.create_or_list(clause['value'], clause['field_name'], clause['field_data_type']) }} 
+        {# 'like' listing #}
+        {%- elif (clause['is_list'] == 'TRUE') and (clause['condition_type'] == 'like') -%}
+          {# use create_like_list macro to build up statement #}
+({{ sql_macros.create_like_list(clause['value'], clause['field_name'], clause['field_data_type']) }}       )
+        {# Date condition #}
+        {%- elif (clause['is_list'] == 'FALSE') and (clause['field_data_type'] == 'date') -%}
+          {# use add_quotes macro to include quotes if required #}
+{{ clause['field_name'] }} {{ clause['condition_type'] }} {{ sql_macros.cast_date(clause['value']) }}
+        {# Simple condition (use add_quotes macro to include quotes if required) #}
+        {%- else -%}
+          {# use add_quotes macro to include quotes if required #}
+{{ clause['field_name'] }} {{ clause['condition_type'] }} {{ sql_macros.add_quotes(clause['value'], clause['field_data_type']) }}
+        {% endif %}
+    {%- endfor -%}
+
+{%- endblock where_clause -%}
+{#
+
+-- GROUPBY Statement
+
+#}
+{% block groupby_clause %}
+{% endblock groupby_clause %}
+
+{# -- End MAIN ---------------------------------------- #}

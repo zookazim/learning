@@ -35,6 +35,26 @@ RA-GRS : read-access geo-redundant storage
 RA_GZRS : read-access geo-zone-redundant storage
 
 
+## Azure Access Storage Tiers
+
+![Azure Storage Access](images/azure_storage_access_tiers.png)
+
+
+* Hot
+* Cool
+* Archive
+
+
+## Azure Table Storage
+
+
+
+## Queue Storage
+
+
+## File Storage
+
+
 
 ## Links
 
