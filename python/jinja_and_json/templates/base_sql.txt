@@ -94,5 +94,5 @@ SELECT {%- for value in columns %}
 #}
 {% block groupby_clause %}
 {% endblock groupby_clause %}
-
+;
 {# -- End MAIN ---------------------------------------- #}
