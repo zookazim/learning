@@ -2,7 +2,7 @@
 
 import requests
 
-url = "https://my-azure-http-example-function.azurewebsites.net/api/HttpExample"
+url = "http://localhost:7071/api/AzFnProjSqlGenerator"
 
 querystring = {"name":"Dave"}
 

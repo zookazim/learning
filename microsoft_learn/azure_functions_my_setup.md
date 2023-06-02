@@ -23,10 +23,16 @@ Use shift+ctrl+p to open the command pallet and type in Azure then select Azure 
 
 ### Run Function
 
+* Create virtual environment if not already created
+```bash
+python3 -m venv my_env
+```
+
+
 * Start virtual environment in terminal (I'm using PowerShell prompt)
 
 ```bash
-> .venv/Scripts/Activate
+> my_env/Scripts/Activate
 ```
 
 ```bash
@@ -62,4 +68,11 @@ Functions:
 
 
 [Quick Start Doc](https://learn.microsoft.com/en-GB/azure/azure-functions/create-first-function-vs-code-python?pivots=python-mode-configuration)
+
+
+[Quick Start example using commandline](https://github.com/yokawasa/azure-functions-python-samples/blob/master/docs/quickstart-v2-python-functions.md)
+
+[Create CI/CD Pipeline for Azure Devops](https://medium.com/globant/how-to-create-and-deploy-a-python-azure-function-using-azure-devops-ci-cd-2aa8f8675716)
+
+[Nice tutorial for Azure Functions in Python](https://towardsdatascience.com/tutorial-of-python-azure-functions-81949b1fd6db)
 
