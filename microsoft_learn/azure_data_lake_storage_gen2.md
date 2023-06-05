@@ -43,3 +43,5 @@ Or you can use the Data lake Gen2 upgrade wizard if you want to convert an exist
 | Ref | Description | Link |
 | --- | ------------------- | --------------- |
 | 1 | Microsoft Learn Training | https://learn.microsoft.com/en-us/training/modules/introduction-to-azure-data-lake-storage/1-introduction |
+| 2 | Upload data exercise | https://learn.microsoft.com/en-us/training/modules/upload-data-to-azure-data-lake-storage/|
+
