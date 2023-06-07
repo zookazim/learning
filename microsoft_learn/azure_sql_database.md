@@ -60,12 +60,14 @@
     * Compatibility - less compatible with third part applications or tools
 
 
+## Deployment Options
+
 
 
 
 ## Links
 
-[Install Azure Functions Core Tools](https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=v4%2Cwindows%2Ccsharp%2Cportal%2Cbash#install-the-azure-functions-core-tools)
+[Udemy dp203 - Azure Deployment Options](https://www.udemy.com/course/dp200exam/learn/lecture/21638670#overview)
 
 
 
