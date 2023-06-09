@@ -47,12 +47,12 @@
             "lnk_src":"CANC",
             "criteria": [
               {"field_name":"DiagnosisDate" , "value":"19840101", "field_data_type":"date"  ,"is_list":"FALSE", "condition_type":">="  }
-             ,{"field_name":"DiagnosisDate" , "value":"20231231", "field_data_type":"date"  ,"is_list":"FALSE", "condition_type":"<="  }
+             ,{"field_name":"DiagnosisDate" , "value":"20201231", "field_data_type":"date"  ,"is_list":"FALSE", "condition_type":"<="  }
              ,{"field_name":"TumourSiteCode", "value":["C569","C570","C571","C572","C574","C577","C578","C579","C481","C482","C488"]
                                                                 , "field_data_type":"string","is_list":"TRUE"  , "condition_type":"like"}
              ,{"field_name":"Behaviour"     , "value":"1"       , "field_data_type":"string","is_list":"FALSE" , "condition_type":"="}
              ,{"field_name":"substring(DiagnosisPostcode,1,1)"
-                                            , "value":"6"       , "field_data_type":"string","is_list":"FALSE" , "condition_type":">="  }
+                                            , "value":"6"       , "field_data_type":"string","is_list":"FALSE" , "condition_type":"="  }
              ,{"field_name":"PersonValid"   , "value":"1"       , "field_data_type":"string","is_list":"FALSE" , "condition_type":"="}
              ,{"field_name":"TumourValid"   , "value":"1"       , "field_data_type":"string","is_list":"FALSE" , "condition_type":"="}
             ],
