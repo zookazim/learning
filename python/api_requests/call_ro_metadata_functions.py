@@ -1,12 +1,16 @@
 
 import sys
 import requests
+import json
 
-url = "http://localhost:7071/api/AzFnProjSqlGenerator"
+#url = "http://localhost:7071/api/SqlGenerator"
 
-querystring = sys.stdin.readlines()
+url = "https://azfnprojmetadata.azurewebsites.net/SqlGenerator"
 
-response = requests.request("GET", url, params=querystring)
+input_lines_list = sys.stdin.readlines()
+querystring = ''.join(input_lines_list)
+
+response = requests.request("GET", url, data=querystring)
 
 print(response.text)
 print("Response code:{}".format(response.status_code))
