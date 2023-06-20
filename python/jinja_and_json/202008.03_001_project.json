@@ -11,7 +11,7 @@
           "id":1234,
           "name":"cohort_a",          
           "description":"All individuals diagnosed with invasive ovarian cancer (including fallopian tube and primary peritoneal cancers) from 1/1/1984 to latest available (including children). ICD Codes (Principal diagnosis): C56 (ovarian cancer),C48.1, C48.2, C48.8 (primary peritoneal cancer),C57 (fallopian tube or other adnexal cancers)",
-          "dat_name": "canc",
+          "dat_id": "canc",
           "table_name_for_extraction" : "DW_Research_Outputs.WACR.Vw_Cancer",
           "insert_into_table_name":"DW_Research_Outputs.PRJ.CohortSelect",
           "lnk_src_keys": ["TumourID"],
@@ -40,7 +40,7 @@
             "id":1235,
             "name":"cohort_b",          
             "description":"All individuals diagnosed with a borderline ovarian tumour from 1/1/1984 to latest available to be identified via the WA cancer registry (including children)",
-            "dat_name": "canc",
+            "dat_id": "canc",
             "table_name_for_extraction" : "DW_Transformed.WACR.CancerMasterfile",
             "insert_into_table_name":"DW_Research_Outputs.PRJ.CohortSelect",
             "lnk_src_keys": ["TumourID"],
@@ -72,7 +72,7 @@
       ,
     "dataset_specs": [
       {
-        "dat_name": "bir",
+        "dat_id": "bir",
         "table_name_for_extraction" : "DW_Research_Outputs.DAT.vw_bir",
         "lnk_src":"BIR_BABY",
         "lnk_src_keys": ["TumourID","RegID"],
@@ -82,7 +82,7 @@
         "db_fields_for_extraction": ["pres_rel","diag","mar","cob"]
       }
     ,{
-        "dat_name": "mor",
+        "dat_id": "mor",
         "table_name_for_extraction" : "DW_Research_Outputs.DAT.vw_mor_m",
         "dat_date_min": "2003-01-01",
         "dat_date_max": "2012-12-31",
@@ -90,7 +90,7 @@
         "db_fields_for_extraction": ["pres_rel","diag","mar","cob"]
       }
       ,{
-        "dat_name": "mor_r",
+        "dat_id": "mor_r",
         "table_name_for_extraction" : "DW_Research_Outputs.DAT.vw_mor_r",
         "dat_date_min": "2003-01-01",
         "dat_date_max": "2012-12-31",
@@ -98,7 +98,7 @@
         "db_fields_for_extraction": ["pres_rel","diag","mar","cob"]
       }
      ,{
-        "dat_name": "emer",
+        "dat_id": "emer",
         "table_name_for_extraction" : "DW_Research_Outputs.DAT.vw_emer",
         "dat_date_min": "2003-01-01",
         "dat_date_max": "2012-12-31",
@@ -106,7 +106,7 @@
         "db_fields_for_extraction": ["sep", "diag", "dagger", "est_code"]
       }
       ,{
-        "dat_name": "mid",
+        "dat_id": "mid",
         "table_name_for_extraction" : "DW_Research_Outputs.DAT.vw_mid",
         "dat_date_min": "2003-01-01",
         "dat_date_max": "2012-12-31",
@@ -114,7 +114,7 @@
         "db_fields_for_extraction": ["sep", "diag", "dagger", "est_code"]
       }
       ,{
-        "dat_name": "wani",
+        "dat_id": "wani",
         "table_name_for_extraction" : "DW_Research_Outputs.DAT.vw_wani",
         "dat_date_min": "2003-01-01",
         "dat_date_max": "2012-12-31",
@@ -122,7 +122,7 @@
         "db_fields_for_extraction": ["sep", "diag", "dagger", "est_code"]
       }
       ,{
-        "dat_name": "canc",
+        "dat_id": "canc",
         "table_name_for_extraction" : "DW_Research_Outputs.DAT.vw_Can",
         "dat_date_min": "2003-01-01",
         "dat_date_max": "2012-12-31",

@@ -1,0 +1,50 @@
+{
+  "project": {
+    "id": "p10",
+    "proj_no": "202203.03",
+    "task_no": "001",
+    "proj_type": "Unlinked Data Standard",
+    "proj_title": "Covid Impact on Cancer",
+    "princ_invest": "Dr Isabelle Soerjomataram",
+    "cohort_specs": [
+          {
+          "id":1246,
+          "name":"cohort",          
+          "description":"diagnosed with cancer between 2003 to 2021 (or most recent) with a follow-up of at least until 31 December 2020 (or most recent), defined through the WA Cancer Registry (ICDO-3 codes C00-96);",
+          "dat_name": "canc",
+          "table_name_for_extraction" : "DW_Research_Outputs.WACR.Vw_Cancer",
+          "insert_into_table_name":"DW_Research_Outputs.PRJ.CohortSelect",
+          "lnk_src_keys": ["TumourID"],
+          "lnk_src":"CANC",
+          "criteria": [
+            {"field_name":"DiagnosisDate", "value":"20030101", "field_data_type":"date"  ,"is_list":"FALSE", "condition_type":">="  }
+           ,{"field_name":"DiagnosisDate", "value":"20201231", "field_data_type":"date"  ,"is_list":"FALSE", "condition_type":"<="  }
+           ,{"field_name":"TumourSiteCode", "value":"C"       , "field_data_type":"string","is_list":"FALSE", "condition_type":"like"}
+            ],
+           "checks": [
+              {"chk_col":"DiagnosisDate","field_data_type":"date"  ,"chk_type":"frequency"}
+             ,{"chk_col":"DiagnosisDate","field_data_type":"date"  ,"chk_type":"min"}
+             ,{"chk_col":"DiagnosisDate","field_data_type":"date"  ,"chk_type":"max"}
+             ,{"chk_col":"CancerType"   ,"field_data_type":"string","chk_type":"frequency"}
+             ,{"chk_col":"TumourSiteCode","field_data_type":"string","chk_type":"frequency"}
+             ,{"chk_col":"Sex"          ,"field_data_type":"string","chk_type":"frequency"}
+             ,{"chk_col":""             ,"field_data_type":"numeric","chk_type":"total_count"}
+            ]
+          }
+        ]
+      ,
+    "dataset_specs": [
+      {
+        "id": "1",
+        "dat_id" : "can",
+        "table_name_for_extraction" : "DW_Research_Outputs.WACR.Vw_Cancer",
+        "lnk_src":"CANC",
+        "lnk_src_keys": ["TumourID"],
+        "dat_date_min": "20030101",
+        "dat_date_max": "20201231",
+        "variables_requested": ["cancer_registration_number", "Date of Birth", "sex", "Tumor Sequence", "Date of incidence", "Age in years", "ICDO-3 Topography","ICDO-3 Morphology","ICDO-3 Behavior","Grade","Most valid basis of diagnosis","Cause of death","Tumor size","No. of lymph nodes examined","No. of lymph nodes involved","date_of_death"],
+        "db_fields_for_extraction": ["cancer_registration_number","date_of_birth","sex","tumour_number","diagnosis_date","Age","tumour_site_code","morphology_code","behaviour_code","grade","basis_of_diagnosis","cause_of_death_code","breast_primary_size_of_tumour","breast_total_nodes_examined","breast_total_nodes_positive","date_of_death"]
+      }
+    ]
+  }
+}
