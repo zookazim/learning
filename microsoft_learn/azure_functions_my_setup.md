@@ -73,6 +73,13 @@ MarkupSafe==2.1.2
 
 ### 2. Publish
 
+#### 2.1 Create Azure Resource Group
+
+Before publishing you need to create an Azure resource group. 
+I achieved this by opening the Azure plugin in VS Code, hovered over the "Resources" section header and clicking on the + button.
+
+#### 2.2 Publish the function to Azure
+
 (I needed to install the Azure CLI for this part, see link at bottom)
 
 From the root of the function app run the following commands;
@@ -88,6 +95,26 @@ For example in PowerShell;
 (.venv) > Set-Variable -Name APP_NAME -Value "AzFnProjSqlGenerator"
 (.venv) > func azure functionapp publish $APP_NAME
 ```
+
+## Troubleshooting
+
+### 1. Function not showing in portal in list of functions
+
+![Function Configuration](images/azure_function_list.png)
+
+Add the following to the configurations;
+"AzureWebJobsFeatureFlags": "EnableWorkerIndexing"
+
+![Function Configuration](images/azure_function_configuration.png)
+
+
+### 2. After publishing 404 message returned
+
+This is the same cause as above so add the following configuration to the function;
+
+"AzureWebJobsFeatureFlags": "EnableWorkerIndexing"
+
+
 
 
 ## Links
@@ -110,6 +137,10 @@ For example in PowerShell;
 
 [Install Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli)
 
+
+[Microsoft Troubleshooting Page](https://learn.microsoft.com/en-us/azure/azure-functions/recover-python-functions?tabs=vscode%2Cbash&pivots=python-mode-decorators)
+
+[Azurite Local Storage Emulator](https://learn.microsoft.com/en-gb/azure/storage/common/storage-use-azurite?tabs=visual-studio)
 
 ## Appendix A : Publish command output
 

@@ -70,4 +70,4 @@
 [Udemy dp203 - Azure Deployment Options](https://www.udemy.com/course/dp200exam/learn/lecture/21638670#overview)
 
 
-
+[Microsoft Azure SQL Documentation](https://learn.microsoft.com/en-us/azure/azure-sql/?view=azuresql)
