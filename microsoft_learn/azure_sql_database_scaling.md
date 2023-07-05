@@ -37,7 +37,12 @@ Two types of scaling
     * Tenants require physical isolation
     * Parts of database are required in different geographical regions (eg. specific region content)
 
-    
+
+### Changing Disks
+
+Change disks by upgrading service tier;
+Standard/General Purpose - Data stored on Azure premium disks
+Premium/Business Critical - Data stored on local SSD
 
 
 ## Links

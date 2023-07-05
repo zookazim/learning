@@ -72,62 +72,111 @@
       ,
     "dataset_specs": [
       {
+        "id": "1",
+        "coh_id":"1234",
         "dat_id": "bir",
-        "table_name_for_extraction" : "DW_Research_Outputs.DAT.vw_bir",
-        "lnk_src":"BIR_BABY",
-        "lnk_src_keys": ["TumourID","RegID"],
-        "dat_date_min": "2003-01-01",
-        "dat_date_max": "2012-12-31",
+        "table_name_for_extraction" : "DW_Research_Outputs.RED.vw_bir",
+        "lnk_src_keys": ["Oid"], 
         "variables_requested": ["Presentation Date", "Principal Diagnosis", "Marital Status", "Country of Birth" ],
-        "db_fields_for_extraction": ["pres_rel","diag","mar","cob"]
+        "db_fields_for_extraction": ["pres_rel","diag","mar","cob"],
+        "criteria": [
+          {"field_name":"coh.CohId", "value":"1234"    , "field_data_type":"string"  ,"is_list":"FALSE", "condition_type":"="  }
+         ,{"field_name":"lnk.src"  , "value":"BRTH_CHLD", "field_data_type":"string"  ,"is_list":"FALSE", "condition_type":"="  }
+         ,{"field_name":"Dob"      , "value":"19450101", "field_data_type":"date"  ,"is_list":"FALSE", "condition_type":">="  }
+         ,{"field_name":"Dob"      , "value":"20230101", "field_data_type":"date"  ,"is_list":"FALSE", "condition_type":"<="  }
+        ]
       }
     ,{
+        "id": "2",
+        "coh_id":"1234",
         "dat_id": "mor",
         "table_name_for_extraction" : "DW_Research_Outputs.DAT.vw_mor_m",
-        "dat_date_min": "2003-01-01",
-        "dat_date_max": "2012-12-31",
+        "lnk_src_keys": ["TumourID","RegID"],        
         "variables_requested": ["Presentation Date", "Principal Diagnosis", "Marital Status", "Country of Birth" ],
-        "db_fields_for_extraction": ["pres_rel","diag","mar","cob"]
+        "db_fields_for_extraction": ["pres_rel","diag","mar","cob"],
+        "criteria": [
+          {"field_name":"coh.CohId"     , "value":"1234"    , "field_data_type":"string","is_list":"FALSE", "condition_type":"="  }
+         ,{"field_name":"lnk.src"       , "value":"MOR", "field_data_type":"string","is_list":"FALSE", "condition_type":"="  }          
+         ,{"field_name":"DiagnosisDate" , "value":"19450101", "field_data_type":"date"  ,"is_list":"FALSE", "condition_type":">="  }
+         ,{"field_name":"DiagnosisDate" , "value":"20230101", "field_data_type":"date"  ,"is_list":"FALSE", "condition_type":"<="  }
+        ]
       }
       ,{
+        "id": "3",
+        "coh_id":"1234",
         "dat_id": "mor_r",
         "table_name_for_extraction" : "DW_Research_Outputs.DAT.vw_mor_r",
+        "lnk_src_keys": ["TumourID","RegID"],        
         "dat_date_min": "2003-01-01",
         "dat_date_max": "2012-12-31",
         "variables_requested": ["Presentation Date", "Principal Diagnosis", "Marital Status", "Country of Birth" ],
-        "db_fields_for_extraction": ["pres_rel","diag","mar","cob"]
+        "db_fields_for_extraction": ["pres_rel","diag","mar","cob"],
+        "criteria": [
+          {"field_name":"coh.CohId"     , "value":"1234"    , "field_data_type":"string","is_list":"FALSE", "condition_type":"="  }
+         ,{"field_name":"lnk.src"       , "value":"MOR"     , "field_data_type":"string","is_list":"FALSE", "condition_type":"="  }             
+        ,{"field_name":"DiagnosisDate"  , "value":"19700101", "field_data_type":"date"  ,"is_list":"FALSE", "condition_type":">="  }
+         ,{"field_name":"DiagnosisDate" , "value":"20230101", "field_data_type":"date"  ,"is_list":"FALSE", "condition_type":"<="  }
+        ]        
       }
      ,{
+        "id": "4",
+        "coh_id":"1234",
         "dat_id": "emer",
         "table_name_for_extraction" : "DW_Research_Outputs.DAT.vw_emer",
-        "dat_date_min": "2003-01-01",
-        "dat_date_max": "2012-12-31",
+        "lnk_src_keys": ["TumourID","RegID"],        
         "variables_requested": ["Separation Date","Principal Diagnoses","Additional Diagnoses","Establishment Code"],
-        "db_fields_for_extraction": ["sep", "diag", "dagger", "est_code"]
+        "db_fields_for_extraction": ["sep", "diag", "dagger", "est_code"],
+        "criteria": [
+          {"field_name":"coh.CohId"     , "value":"1234"    , "field_data_type":"string","is_list":"FALSE", "condition_type":"="  }
+         ,{"field_name":"lnk.src"       , "value":"EMER"    , "field_data_type":"string","is_list":"FALSE", "condition_type":"="  }             
+         ,{"field_name":"DiagnosisDate" , "value":"20020101", "field_data_type":"date"  ,"is_list":"FALSE", "condition_type":">="  }
+         ,{"field_name":"DiagnosisDate" , "value":"20230101", "field_data_type":"date"  ,"is_list":"FALSE", "condition_type":"<="  }
+        ]
       }
       ,{
+        "id": "5",
+        "coh_id":"1234",
         "dat_id": "mid",
         "table_name_for_extraction" : "DW_Research_Outputs.DAT.vw_mid",
-        "dat_date_min": "2003-01-01",
-        "dat_date_max": "2012-12-31",
+        "lnk_src_keys": ["TumourID","RegID"],        
         "variables_requested": ["Separation Date","Principal Diagnoses","Additional Diagnoses","Establishment Code"],
-        "db_fields_for_extraction": ["sep", "diag", "dagger", "est_code"]
+        "db_fields_for_extraction": ["sep", "diag", "dagger", "est_code"],
+        "criteria": [
+          {"field_name":"coh.CohId"     , "value":"1234"    , "field_data_type":"string","is_list":"FALSE", "condition_type":"="  }
+         ,{"field_name":"lnk.src"       , "value":"MID_BABY", "field_data_type":"string","is_list":"FALSE", "condition_type":"="  }            
+         ,{"field_name":"DiagnosisDate" , "value":"19800101", "field_data_type":"date"  ,"is_list":"FALSE", "condition_type":">="  }
+         ,{"field_name":"DiagnosisDate" , "value":"20230101", "field_data_type":"date"  ,"is_list":"FALSE", "condition_type":"<="  }
+        ]
       }
       ,{
+        "id": "6",
+        "coh_id":"1234",
         "dat_id": "wani",
         "table_name_for_extraction" : "DW_Research_Outputs.DAT.vw_wani",
-        "dat_date_min": "2003-01-01",
-        "dat_date_max": "2012-12-31",
+        "lnk_src_keys": ["TumourID","RegID"],        
         "variables_requested": ["Separation Date","Principal Diagnoses","Additional Diagnoses","Establishment Code"],
-        "db_fields_for_extraction": ["sep", "diag", "dagger", "est_code"]
+        "db_fields_for_extraction": ["sep", "diag", "dagger", "est_code"],
+        "criteria": [
+          {"field_name":"coh.CohId"     , "value":"1234"    , "field_data_type":"string","is_list":"FALSE", "condition_type":"="  }
+         ,{"field_name":"lnk.src"       , "value":"WANI"    , "field_data_type":"string","is_list":"FALSE", "condition_type":"="  }            
+         ,{"field_name":"DiagnosisDate" , "value":"19810101", "field_data_type":"date"  ,"is_list":"FALSE", "condition_type":">="  }
+         ,{"field_name":"DiagnosisDate" , "value":"20230101", "field_data_type":"date"  ,"is_list":"FALSE", "condition_type":"<="  }
+        ]
       }
       ,{
+        "id": "7",
+        "coh_id":"1234",
         "dat_id": "canc",
         "table_name_for_extraction" : "DW_Research_Outputs.DAT.vw_Can",
-        "dat_date_min": "2003-01-01",
-        "dat_date_max": "2012-12-31",
+        "lnk_src_keys": ["TumourID","RegID"], 
         "variables_requested": ["Separation Date","Principal Diagnoses","Additional Diagnoses","Establishment Code"],
-        "db_fields_for_extraction": ["sep", "diag", "dagger", "est_code"]
+        "db_fields_for_extraction": ["sep", "diag", "dagger", "est_code"],
+        "criteria": [
+          {"field_name":"coh.CohId"     , "value":"1234"    , "field_data_type":"string","is_list":"FALSE", "condition_type":"="  }
+         ,{"field_name":"lnk.src"       , "value":"CANC"     , "field_data_type":"string","is_list":"FALSE", "condition_type":"="  }            
+         ,{"field_name":"DiagnosisDate" , "value":"19840101", "field_data_type":"date"  ,"is_list":"FALSE", "condition_type":">="  }
+         ,{"field_name":"DiagnosisDate" , "value":"20200101", "field_data_type":"date"  ,"is_list":"FALSE", "condition_type":"<="  }
+        ]
       }
     ]
   }

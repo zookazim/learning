@@ -92,7 +92,7 @@ func azure functionapp publish $APP_NAME
 For example in PowerShell;
 
 ```bash
-(.venv) > Set-Variable -Name APP_NAME -Value "AzFnProjSqlGenerator"
+(.venv) > Set-Variable -Name APP_NAME -Value "RoSqlGenerator"
 (.venv) > func azure functionapp publish $APP_NAME
 ```
 
