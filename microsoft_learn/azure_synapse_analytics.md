@@ -1,6 +1,11 @@
+[My Microsoft Azure Home](microsoft_learn_home.md)
+
 # Azure Synapse Analytics
 
 ## What is Azure Synapse
+
+Synapse is the next generation of Azure SQL Data Warehouse, blending big data analytics, data warehousing and data integration into a single unified service that provides end-to-end analytics with limitless scale.
+
 
 ![Azure Synapse Analytics](images/synapse_what_is_it.png)
 

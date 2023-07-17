@@ -1,14 +1,14 @@
 {
   "project": {
-    "id": "p2",
+    "id": "9",
     "proj_no": "202008.03",
     "task_no": "001",
     "proj_type": "Linked Data Standard",
     "proj_title": "Ovarian Cancer",
     "princ_invest": "Prof Penelope Webb",
-    "cohort_specs": [
+    "study_group_specs": [
           {
-          "id":1234,
+          "id":"14",
           "name":"cohort_a",          
           "description":"All individuals diagnosed with invasive ovarian cancer (including fallopian tube and primary peritoneal cancers) from 1/1/1984 to latest available (including children). ICD Codes (Principal diagnosis): C56 (ovarian cancer),C48.1, C48.2, C48.8 (primary peritoneal cancer),C57 (fallopian tube or other adnexal cancers)",
           "dat_id": "canc",
@@ -37,7 +37,7 @@
             ]
           }
          ,{
-            "id":1235,
+            "id":"15",
             "name":"cohort_b",          
             "description":"All individuals diagnosed with a borderline ovarian tumour from 1/1/1984 to latest available to be identified via the WA cancer registry (including children)",
             "dat_id": "canc",
@@ -73,7 +73,7 @@
     "dataset_specs": [
       {
         "id": "1",
-        "coh_id":"1234",
+        "grp_id":"14",
         "dat_id": "bir",
         "table_name_for_extraction" : "DW_Research_Outputs.RED.vw_bir",
         "lnk_src_keys": ["Oid"], 
@@ -88,7 +88,7 @@
       }
     ,{
         "id": "2",
-        "coh_id":"1234",
+        "grp_id":"14",
         "dat_id": "mor",
         "table_name_for_extraction" : "DW_Research_Outputs.DAT.vw_mor_m",
         "lnk_src_keys": ["TumourID","RegID"],        
@@ -103,7 +103,7 @@
       }
       ,{
         "id": "3",
-        "coh_id":"1234",
+        "grp_id":"14",
         "dat_id": "mor_r",
         "table_name_for_extraction" : "DW_Research_Outputs.DAT.vw_mor_r",
         "lnk_src_keys": ["TumourID","RegID"],        
@@ -114,13 +114,13 @@
         "criteria": [
           {"field_name":"coh.CohId"     , "value":"1234"    , "field_data_type":"string","is_list":"FALSE", "condition_type":"="  }
          ,{"field_name":"lnk.src"       , "value":"MOR"     , "field_data_type":"string","is_list":"FALSE", "condition_type":"="  }             
-        ,{"field_name":"DiagnosisDate"  , "value":"19700101", "field_data_type":"date"  ,"is_list":"FALSE", "condition_type":">="  }
+         ,{"field_name":"DiagnosisDate"  , "value":"19700101", "field_data_type":"date"  ,"is_list":"FALSE", "condition_type":">="  }
          ,{"field_name":"DiagnosisDate" , "value":"20230101", "field_data_type":"date"  ,"is_list":"FALSE", "condition_type":"<="  }
         ]        
       }
      ,{
         "id": "4",
-        "coh_id":"1234",
+        "grp_id":"14",
         "dat_id": "emer",
         "table_name_for_extraction" : "DW_Research_Outputs.DAT.vw_emer",
         "lnk_src_keys": ["TumourID","RegID"],        
@@ -135,7 +135,7 @@
       }
       ,{
         "id": "5",
-        "coh_id":"1234",
+        "grp_id":"14",
         "dat_id": "mid",
         "table_name_for_extraction" : "DW_Research_Outputs.DAT.vw_mid",
         "lnk_src_keys": ["TumourID","RegID"],        
@@ -150,7 +150,7 @@
       }
       ,{
         "id": "6",
-        "coh_id":"1234",
+        "grp_id":"14",
         "dat_id": "wani",
         "table_name_for_extraction" : "DW_Research_Outputs.DAT.vw_wani",
         "lnk_src_keys": ["TumourID","RegID"],        
@@ -165,7 +165,7 @@
       }
       ,{
         "id": "7",
-        "coh_id":"1234",
+        "grp_id":"14",
         "dat_id": "canc",
         "table_name_for_extraction" : "DW_Research_Outputs.DAT.vw_Can",
         "lnk_src_keys": ["TumourID","RegID"], 

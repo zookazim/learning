@@ -1,0 +1,109 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "project": {
+      "type": "object",
+      "properties": {
+        "id": {"type": "string"},
+        "proj_no": {"type": "string"},
+        "task_no": {"type": "string"},
+        "proj_type": {"type": "string"},
+        "proj_title": {"type": "string"},
+        "princ_invest": {"type": "string"},
+        "study_group_specs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {"type": "integer"},
+              "name": {"type": "string"},
+              "description": {"type": "string"},
+              "dat_id": {"type": "string"},
+              "table_name_for_extraction": {"type": "string"},
+              "insert_into_table_name": {"type": "string"},
+              "lnk_src_keys": {
+                "type": "array",
+                "items": {"type": "string"}
+              },
+              "lnk_src": {"type": "string"},
+              "criteria": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "field_name": {"type": "string"},
+                    "value": {
+                      "anyOf": [
+                        {"type": "string"},
+                        {"type": "array", "items": {"type": "string"}}
+                      ]
+                    },
+                    "field_data_type": {"type": "string"},
+                    "is_list": {"type": "string"},
+                    "condition_type": {"type": "string"}
+                  },
+                  "required": ["field_name", "value", "field_data_type", "is_list", "condition_type"]
+                }
+              },
+              "checks": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "chk_col": {"type": "string"},
+                    "field_data_type": {"type": "string"},
+                    "chk_type": {"type": "string"}
+                  },
+                  "required": ["chk_col", "field_data_type", "chk_type"]
+                }
+              }
+            },
+            "required": ["id", "name", "description", "dat_id", "table_name_for_extraction", "insert_into_table_name", "lnk_src_keys", "lnk_src", "criteria", "checks"]
+          }
+        },
+        "dataset_specs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {"type": "string"},
+              "grp_id": {"type": "string"},
+              "dat_id": {"type": "string"},
+              "table_name_for_extraction": {"type": "string"},
+              "lnk_src_keys": {
+                "type": "array",
+                "items": {"type": "string"}
+              },
+              "variables_requested": {
+                "type": "array",
+                "items": {"type": "string"}
+              },
+              "db_fields_for_extraction": {
+                "type": "array",
+                "items": {"type": "string"}
+              },
+              "criteria": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "field_name": {"type": "string"},
+                    "value": {"type": "string"},
+                    "field_data_type": {"type": "string"},
+                    "is_list": {"type": "string"},
+                    "condition_type": {"type": "string"}
+                  },
+                  "required": ["field_name", "value", "field_data_type", "is_list", "condition_type"]
+                }
+              }
+            },
+            "required": ["id", "grp_id", "dat_id", "table_name_for_extraction", "lnk_src_keys", "variables_requested", "db_fields_for_extraction", "criteria"]
+          }
+        }
+      },
+      "required": ["id", "proj_no", "task_no", "proj_type", "proj_title", "princ_invest", "study_group_specs", "dataset_specs"]
+    }
+  },
+  "required": ["project"]
+}
