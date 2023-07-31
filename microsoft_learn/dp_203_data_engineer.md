@@ -18,8 +18,12 @@
 
 ### Exercise
 
-* Github Microsoft Learning (not Microsoft) https://github.com/MicrosoftLearning/dp-203-azure-data-engineer/tree/master
+* [Github Microsoft Learning (not Microsoft)](https://github.com/MicrosoftLearning/dp-203-azure-data-engineer/tree/master)
 
+
+### Exam Prep
+
+* [Exam Topics Website](https://www.examtopics.com/exams/microsoft/dp-203/)
 
 
  
