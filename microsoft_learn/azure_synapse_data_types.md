@@ -65,5 +65,16 @@
 * remember table is split into 60 partitions even before custom partitions is created
 
 
+## Dimensional Model Best Practice
+
+Fact tables
+* Large tables better as Columnstores
+* Distribute using Hash key as much as possible
+* Partition only if the table is large enough to fill each segment
 
 
+Dimension Tables
+* Hash or round robin if no clear candidate key (if small then round robin)
+* Heap or Clustered Index for small dimensions
+* Add secondary indexes for alternate join columns
+* Don't use partitions!
