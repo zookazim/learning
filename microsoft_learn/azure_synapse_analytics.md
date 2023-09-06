@@ -1,5 +1,7 @@
 [My Microsoft Azure Home](microsoft_learn_home.md)
 
+[Azure Synapse Home](azure_synapse_home.md)
+
 # Azure Synapse Analytics
 
 ## What is Azure Synapse
