@@ -19,9 +19,15 @@
     * Bypasses the Control Node and loads directly into the Compute Node
 
 
-
 ## Loading with SSIS
 
+* Polybase must use the ControlNode so this can become a bottleneck even when using MPP Engine
+
+
+## Loading with Polybase
+
+* Polybase loads in parallel using the compute nodes and Control Node is not involved
+* Scales much better and loads much quicker
 
 
 
