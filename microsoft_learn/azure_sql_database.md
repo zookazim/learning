@@ -3,7 +3,15 @@
 [Azure Relational Data Stores](azure_relational_data_stores.md)
 
 
-# Azure SQL
+# Azure SQL Database
+
+[High Availability/Disaster Recovery](azure_sql_database_ha_dr.md)
+
+[Backup and Restore](azure_sql_database_backup_restore.md)
+
+[Scaling](azure_sql_database_backup_restore.md)
+
+
 
 ## Features
 
