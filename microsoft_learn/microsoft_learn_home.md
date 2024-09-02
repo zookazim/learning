@@ -8,6 +8,7 @@
 
 [Azure Synapse - Serverless SQL Pools](azure_synapse_serverless_sql_pools.md)
 
+[Azure Batch Processing](azure_batch_processing.md)
 
 
 ## Exams
