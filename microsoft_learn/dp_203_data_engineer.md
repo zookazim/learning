@@ -9,10 +9,13 @@
 
 ## Courses
 
-* Microsoft Learn https://learn.microsoft.com/en-gb/training/courses/dp-203t00
+### Microsoft
+* [Microsoft Learn Course DP-203T00-A: Data Engineering on Microsoft Azure](https://learn.microsoft.com/en-gb/training/courses/dp-203t00)
 
-* Udemy https://www.udemy.com/course/dp200exam/
+### Udemy 
 
+* [DP-203: Data Engineering on Microsoft Azure - 2022 (Eshant Garg)](https://www.udemy.com/course/dp200exam/)
+* [DP-203 - Data Engineering on Microsoft Azure (Alan Rodrigues)](https://www.udemy.com/course/data-engineering-on-microsoft-azure/learn/lecture/27326978?start=0#overview)
 
 ## Resources
 
@@ -25,5 +28,3 @@
 
 * [Exam Topics Website](https://www.examtopics.com/exams/microsoft/dp-203/)
 
-
- 
