@@ -6,6 +6,34 @@
 Can find tutorials on the Azure Data Factory home page once you have created the new Data Factory resource.
 
 
+## 1. Integration Runtime
+
+This is the compute for the pipelines
+
+### 1.1 Data Integration Capabilities
+
+1. Data Flow
+
+2. Data Movement
+
+3. Activity Dispatch
+
+4. SSIS Package Execution
+
+
+
+### 1.2 Types
+
+1. Azure Integration Runtime
+
+
+
+2. Self-hosted Integration Runtime
+
+3. SSIS Integration Runtime
+
+
+
 
 ## Links
 
