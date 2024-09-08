@@ -37,6 +37,7 @@ This is the compute for the pipelines
 
 ## Links
 
+[Microsoft Doco : Azure Data Factory](https://learn.microsoft.com/en-us/azure/data-factory/)
 
-
+[Microsoft Learn : Azure Data Factory](https://adf.azure.com/en/learn)
 
