@@ -26,13 +26,31 @@ This is the compute for the pipelines
 
 1. Azure Integration Runtime
 
-
-
 2. Self-hosted Integration Runtime
 
 3. SSIS Integration Runtime
 
 
+## 2. Building
+
+### 2.1 Data Pipelines
+
+### 2.2 Datasets
+
+### 2.3 Data Flow
+
+#### 2.3.1 Mapping Data Flow
+
+
+
+#### 2.3.2 Wrangling Data Flow
+
+Uses Power Query editor
+
+Used to manipulate the data
+* remove/rename columns
+* sorting and formatting 
+* add new columns and create derivations
 
 
 ## Links
