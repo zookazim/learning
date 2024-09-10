@@ -2,7 +2,7 @@
 
 # Apache Spark
 
-
+Spark is an open source unified analytics engine for large-scale data processing.
 
 ## 1. RDDs : Basic Building Blocks of Spark
 
