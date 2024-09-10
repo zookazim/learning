@@ -33,6 +33,25 @@ This is the compute for the pipelines
 3. SSIS Integration Runtime
 
 
+## 2. Triggers
+
+3 types of triggers;
+
+### 1. Schedule Time
+
+### 2. Tumbling window
+
+ #### One-to-one relationship
+ #### Advanced configuration
+ * Dependencies
+ * delay
+ * retury
+ * concurrency
+
+ #### Properties
+ * trigger().outputs.WindowStartTime
+ * trigger().outputs.WindowEndTime
+### 3. Event based
 
 
 ## Links
