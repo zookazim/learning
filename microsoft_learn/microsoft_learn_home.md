@@ -10,6 +10,7 @@
 
 [Azure Batch Processing](azure_batch_processing.md)
 
+[Azure Streaming Analytics](azure_streaming_analytics.md)
 
 ## Exams
 
