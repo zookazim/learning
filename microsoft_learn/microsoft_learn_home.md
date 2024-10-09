@@ -12,6 +12,8 @@
 
 [Azure Streaming Analytics](azure_streaming_analytics.md)
 
+[Azure Monitor Service](azure_monitor_service.md)
+
 ## Exams
 
 [DP-203 : Data Engineer](dp_203_data_engineer.md)
