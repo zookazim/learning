@@ -2,6 +2,10 @@
 
 ## Microsoft Docs
 
+* [Certification : Azure Data Engineer](https://learn.microsoft.com/en-us/credentials/certifications/azure-data-engineer/?practice-assessment-type=certification)
+
+* [Syllabus](https://learn.microsoft.com/en-gb/credentials/certifications/resources/study-guides/dp-203)
+
 * Exam Study guide https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4MbYT
 
 
