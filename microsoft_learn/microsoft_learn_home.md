@@ -14,6 +14,8 @@
 
 [Azure Monitor Service](azure_monitor_service.md)
 
+[Azure Design Solutions](azure_design_solutions)
+
 ## Exams
 
 [DP-203 : Data Engineer](dp_203_data_engineer.md)
