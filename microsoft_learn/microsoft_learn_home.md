@@ -16,6 +16,8 @@
 
 [Azure Design Solutions](azure_design_solutions)
 
+[Azure Command Line Tools](azure_cli_tools.md)
+
 ## Exams
 
 [DP-203 : Data Engineer](dp_203_data_engineer.md)
