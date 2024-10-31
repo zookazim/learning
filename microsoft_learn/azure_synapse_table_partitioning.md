@@ -19,3 +19,6 @@
 
 
 
+## References
+
+[Microsoft Docs - Synapse Table Partitioning](https://learn.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-partition)
