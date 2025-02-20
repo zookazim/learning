@@ -25,7 +25,35 @@ Team roles can benefit;
 * Data Analysts - explore data using T-SQL and spark using their favourite tools
 
 
+## T-SQL support
 
+### Supported
+
+* any tool that connects to SQL database can connect to the SQL endpoint
+* Databases - multiple databases
+* Views, stored procs, file formats and tables
+
+### Security
+
+* Logins and users
+* Credentials to control access to storage accounts
+* Grant, deny and revoke permissions per object level
+* Microsoft Entra integration
+
+### Supported T-SQL
+
+* Full SELECT surface area in including most sql functions
+* CETAS
+* DDL statements related to views and security only
+
+### Not supported
+
+Serverless SQL pool has no local storage, data cannot be stored eg. in tables or materialised views.
+
+* DML :-(
+* Tables
+* Triggers
+* Materialised views
 
 
 ## Links
