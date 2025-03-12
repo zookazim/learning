@@ -11,15 +11,13 @@
 * [Polybase](azure_synapse_polybase.md)
 * [Serverless SQL Pools](azure_synapse_serverless_sql_pools.md)
 
-# Working with Data
+# Working with Synapse
 
 * [Loading Data](azure_synapse_loading_data.md)
-
-
+* [Source Code Control and Deployment](azure_synapse_code_control.md)
 
 ## Links
 
-[Install Azure Functions Core Tools](https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=v4%2Cwindows%2Ccsharp%2Cportal%2Cbash#install-the-azure-functions-core-tools)
-
+* [Microsoft Learn : Azure Synapse](https://learn.microsoft.com/en-us/azure/synapse-analytics/)
 
 

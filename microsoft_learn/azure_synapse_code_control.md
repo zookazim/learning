@@ -1,0 +1,22 @@
+[My Microsoft Azure Home](microsoft_learn_home.md) > [Synapse Home](azure_synapse_home.md)
+
+
+
+
+
+## References
+
+### Microsoft Learn
+
+* [Source control in Synapse Studio](https://learn.microsoft.com/en-us/azure/synapse-analytics/cicd/source-control)
+
+* [Continuous integration and delivery in Azure Data Factory](https://learn.microsoft.com/en-us/azure/data-factory/continuous-integration-delivery#best-practices-for-cicd)
+
+
+### Articles
+
+[Azure Synapse Git Integration](https://chatgpt.com/c/67cfa299-4574-8003-9b22-3737f655f9f2)
+
+[Azure Synapse Git CICD](https://jamescook.dev/azure-synapse-git-cicd)
+
+[Dustin Vannoy Blog : Azure Synapse CI/CD](https://dustinvannoy.com/2022/04/06/azure-synapse-ci-cd/)
