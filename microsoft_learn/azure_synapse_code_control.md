@@ -20,3 +20,5 @@
 [Azure Synapse Git CICD](https://jamescook.dev/azure-synapse-git-cicd)
 
 [Dustin Vannoy Blog : Azure Synapse CI/CD](https://dustinvannoy.com/2022/04/06/azure-synapse-ci-cd/)
+
+[Microsoft Community Hub : Boost your CICD automation for Synapse SQL Serverless by taking advantage of SSDT and SqlPackage CLI](https://techcommunity.microsoft.com/blog/azuresynapseanalyticsblog/boost-your-cicd-automation-for-synapse-sql-serverless-by-taking-advantage-of-ssd/3922851)

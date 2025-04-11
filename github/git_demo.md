@@ -1,7 +1,89 @@
 # Git Demo
 
 
-## 1. Clone Repo Locally (using VS Code)
+## 1. Clone Repo Locally (GitBash)
+
+### 1.1 Get URL of repo
+
+![GitHub Clone Repo in VS Code](images/git_clone_repo_gitbash.png)
+
+### 1.2 Open Gitbash 
+
+```
+$ git clone https://github.com/zookazim/hello-world.git
+```
+
+
+    Cloning into 'hello-world'...
+    remote: Enumerating objects: 10, done.
+    remote: Counting objects: 100% (3/3), done.
+    remote: Compressing objects: 100% (2/2), done.
+    remote: Total 10 (delta 0), reused 2 (delta 0), pack-reused 7 (from 1)
+    Receiving objects: 100% (10/10), done.
+
+```
+$ ls
+
+$ cd hello-world
+```
+
+```
+$ git branch --all
+
+$ git branch NewDemoBranch
+
+$ git branch --all
+
+$ git switch NewDemoBranch
+```
+    M       README.md
+    Switched to branch 'NewDemoBranch'
+
+
+```
+$ git status
+```
+    On branch NewDemoBranch
+    nothing to commit, working tree clean
+
+```
+$  git push --set-upstream origin NewDemoBranch
+```
+
+```
+$  git switch NewDemoBranch
+```
+
+
+```
+$  git status
+```
+
+    On branch NewDemoBranch
+    Changes not staged for commit:
+      (use "git add <file>..." to update what will be committed)
+      (use "git restore <file>..." to discard changes in working directory)
+            modified:   README.md
+    
+    no changes added to commit (use "git add" and/or "git commit -a")
+
+```
+$ vi README.txt
+
+$ cat README.txt
+
+$ git status
+
+$ git add README.md
+
+$ git commit -m "Changed a few things"
+
+```
+
+<br>
+
+
+## 2. Clone Repo Locally (using VS Code)
 
 ### 2.1 Open VS Code and Clone Repo
 
@@ -21,12 +103,12 @@ You may be prompted to login to GitHub if you are not already logged in. When su
 
 
 
-## 2 Create a branch on remote repo (GitHub web page)
+## 3. Create a branch on remote repo (GitHub web page)
 
 "New Branch" button
 
 
-### 2.2 Check the branch is created from GitBash
+### 3.2 Check the branch is created from GitBash
 
 ```
 $ git fetch
@@ -98,14 +180,14 @@ $ git branch --all
   remotes/origin/workspace_publish_prod
 ```
 
-## 2. Synapse Example Create a Branch
+## 4. Synapse Example Create a Branch
 
-### 2.1 Create a branch on remote repo (GitHub web page)
+### 4.1 Create a branch on remote repo (GitHub web page)
 
 "New Branch" button
 
 
-### 2.2 Check the branch is created from GitBash
+### 4.2 Check the branch is created from GitBash
 
 ```
 $ git fetch
@@ -113,7 +195,7 @@ From https://github.com/Mental-Health-Commission/Synapse-Analytics-workspace
  * [new branch]        daves_test -> origin/daves_test
 ```
 
-### 2.3 Create the Branch Locally
+### 4.3 Create the Branch Locally
 
 ```
 $ git branch --all
@@ -140,7 +222,7 @@ $ git branch --all
 
 ```
 
-### 2.4 Create the Branch Locally
+### 4.4 Create the Branch Locally
 
 Use the git checkout command to create the branch and track the remote branch.
 
