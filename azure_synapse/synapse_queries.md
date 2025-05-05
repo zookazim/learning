@@ -67,3 +67,19 @@ FROM OPENROWSET(
           total_amount FLOAT
     ) AS nyc
 ```
+
+## 3. Delta File History
+
+You can view history using a timestamp or a version number. Query the versions from DESCRIBE HISTORY sql command;
+
+```
+describe a1_mhe.fact_admitted
+
+describe history a1_mhe.fact_admitted
+```
+
+Return data from a particular version;
+
+```
+SELECT count(*) FROM a1_mhe.fact_admitted VERSION AS OF 0;
+```
