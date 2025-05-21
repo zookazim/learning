@@ -143,6 +143,9 @@ Delete merged branch (only possible if not HEAD):
 Delete not merged branch:
 `git branch -D branch_to_delete`
 
+Delete remote branch:
+`git push origin -d branch_to_delete`
+
 
 Merge
 -----------
