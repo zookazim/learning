@@ -11,7 +11,7 @@
 * [Polybase](azure_synapse_polybase.md)
 * [Serverless SQL Pools](azure_synapse_serverless_sql_pools.md)
 
-# Working with Synapse
+## Working with Synapse
 
 * [Loading Data](azure_synapse_loading_data.md)
 * [Source Code Control and Deployment](azure_synapse_code_control.md)

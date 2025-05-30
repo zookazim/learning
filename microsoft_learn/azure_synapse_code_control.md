@@ -12,6 +12,8 @@
 
 * [Continuous integration and delivery in Azure Data Factory](https://learn.microsoft.com/en-us/azure/data-factory/continuous-integration-delivery#best-practices-for-cicd)
 
+* [Continuous integration and delivery in Azure Synapse](https://learn.microsoft.com/en-us/azure/synapse-analytics/cicd/continuous-integration-delivery)
+
 
 ### Articles
 
