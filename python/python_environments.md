@@ -38,6 +38,18 @@ source my_env/bin/activate
 my_env\Scripts\activate
 ```
 
+## VSCode Notebooks
+
+To activate your environment in VSCode & Jupyter notebook
+* create the environment manually as above (not using the VSCode prompt)
+* install the Jypyter kernel in your new environment
+``` bash
+python3 -m ipykernel install --user --name=virtual_env_name
+```
+* select the python interpreter from your virtual environment
+  * `Ctrl + Shift + P` then "Python: Select Interpreter"
+  * Enter the interpreter path in your venv's bin
+
 
 ## Remove environment
 

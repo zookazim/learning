@@ -13,5 +13,5 @@
 * [Docker](docker/docker.md)
 * [Git](github/git_cheatsheet.md)
 * [GitHub](github/git_demo.md)
-* [Microsoft Learn](microsoft_learn/microsoft_learn_home.mnd)
+* [Microsoft Learn](microsoft_learn/microsoft_learn_home.md)
 * [Python](python/python_home.md)

@@ -1,6 +1,8 @@
 [My Microsoft Azure Home](microsoft_learn_home.md) > [Synapse Home](azure_synapse_home.md)
 
+# Azure Synapse Code Control & Deployment
 
+## 
 
 
 
