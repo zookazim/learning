@@ -22,7 +22,7 @@
                 "spark.dynamicAllocation.enabled": "false",
                 "spark.dynamicAllocation.minExecutors": "2",
                 "spark.dynamicAllocation.maxExecutors": "2",
-                "spark.autotune.trackingId": "c6e5e9af-5ec5-407a-899d-f3cb346a5c62"
+                : "c6e5e9af-5ec5-407a-899d-f3cb346a5c62"
             }
         },
         "metadata": {
@@ -134,7 +134,7 @@
                     "from pyspark.sql.functions import row_number\n",
                     "from functools import reduce"
                 ],
-                "execution_count": 0
+                "execution_count": 63
             },
             {
                 "cell_type": "code",
@@ -236,7 +236,7 @@
                     "    exception_adls_url = \"\"\n",
                     "    exception_file_system_name = \"\""
                 ],
-                "execution_count": 0
+                "execution_count": 64
             },
             {
                 "cell_type": "markdown",
@@ -268,7 +268,7 @@
                     "# Create Spark Session\n",
                     "spark = SparkSession.builder.getOrCreate()"
                 ],
-                "execution_count": 0
+                "execution_count": 65
             },
             {
                 "cell_type": "markdown",
@@ -367,7 +367,7 @@
                     "print(\"app id: \" + file_app_id)\n",
                     "print(\"file timestamp: \" + file_timestamp)"
                 ],
-                "execution_count": 0
+                "execution_count": 66
             },
             {
                 "cell_type": "markdown",
@@ -441,7 +441,7 @@
                     "# Create empty dataframe for the exceptions\n",
                     "exception_df = spark.createDataFrame([], exception_schema)"
                 ],
-                "execution_count": 0
+                "execution_count": 67
             },
             {
                 "cell_type": "markdown",
@@ -494,7 +494,7 @@
                     "\n",
                     "schema = StructType(fields)"
                 ],
-                "execution_count": 0
+                "execution_count": 68
             },
             {
                 "cell_type": "markdown",
@@ -531,7 +531,7 @@
                     "\n",
                     "print(\"template_df and header_df created\")"
                 ],
-                "execution_count": 0
+                "execution_count": 69
             },
             {
                 "cell_type": "markdown",
@@ -577,7 +577,7 @@
                     "input_df = spark.read.option(\"header\", \"false\").csv(raw_input_file_path)\n",
                     "input_df = input_df.fillna(\"\")"
                 ],
-                "execution_count": 0
+                "execution_count": 70
             },
             {
                 "cell_type": "markdown",
@@ -646,7 +646,7 @@
                     "# Load output into dataframe formatted_df, not infering the schema from each column's values\n",
                     "formatted_df = spark.read.option(\"header\", \"true\").option(\"inferschema\", \"false\").csv(raw_formatted_file_path)"
                 ],
-                "execution_count": 0
+                "execution_count": 71
             },
             {
                 "cell_type": "markdown",
@@ -683,7 +683,7 @@
                     "if file_column_cnt - excluded_columns != schema_column_cnt:\n",
                     "    print(\"Incorrect number of columns in file: \" + str(file_column_cnt) + \" (\" + str(schema_column_cnt) + \")\")"
                 ],
-                "execution_count": 0
+                "execution_count": 72
             },
             {
                 "cell_type": "markdown",
@@ -790,7 +790,7 @@
                     "\n",
                     "    print(\"Exceptions so far: \" + str(exception_df.count()))"
                 ],
-                "execution_count": 0
+                "execution_count": 73
             },
             {
                 "cell_type": "markdown",
@@ -902,7 +902,7 @@
                     "\n",
                     "    print(\"Exceptions so far: \" + str(exception_df.count()))"
                 ],
-                "execution_count": 0
+                "execution_count": 74
             },
             {
                 "cell_type": "markdown",
@@ -950,7 +950,7 @@
                     "else: \n",
                     "    print(\"End of validation checks\")"
                 ],
-                "execution_count": 0
+                "execution_count": 75
             },
             {
                 "cell_type": "markdown",
@@ -1004,7 +1004,7 @@
                     "# Count the number of rows in the DataFrame\n",
                     "print(\"Number of rows saved:\", df.count())"
                 ],
-                "execution_count": 0
+                "execution_count": 76
             },
             {
                 "cell_type": "markdown",
@@ -1055,7 +1055,7 @@
                     "\n",
                     "print(\"Incomning rows: \" + str(output_df.count()))"
                 ],
-                "execution_count": 0
+                "execution_count": 77
             },
             {
                 "cell_type": "markdown",
@@ -1089,7 +1089,7 @@
                     "\n",
                     "print(\"Values trimmed\")"
                 ],
-                "execution_count": 0
+                "execution_count": 78
             },
             {
                 "cell_type": "markdown",
@@ -1128,7 +1128,7 @@
                     "\n",
                     "    print(\"Missing leading '0' added to code columns\")"
                 ],
-                "execution_count": 0
+                "execution_count": 79
             },
             {
                 "cell_type": "markdown",
@@ -1166,7 +1166,7 @@
                     "\n",
                     "print(\"Missing leading '0' added to code columns\")"
                 ],
-                "execution_count": 0
+                "execution_count": 80
             },
             {
                 "cell_type": "markdown",
@@ -1210,7 +1210,7 @@
                     "\n",
                     "print(\"Removed leading '0' from the Episode ID\")"
                 ],
-                "execution_count": 0
+                "execution_count": 81
             },
             {
                 "cell_type": "markdown",
@@ -1254,7 +1254,7 @@
                     "\n",
                     "print(\"Capitalized specified columns\")"
                 ],
-                "execution_count": 0
+                "execution_count": 82
             },
             {
                 "cell_type": "markdown",
@@ -1308,7 +1308,7 @@
                     "\n",
                     "print(\"Missing leading '0' added to date columns\")"
                 ],
-                "execution_count": 0
+                "execution_count": 83
             },
             {
                 "cell_type": "markdown",
@@ -1444,7 +1444,7 @@
                     "\n",
                     "print(\"Exceptions so far: \" + str(exception_df.count()))"
                 ],
-                "execution_count": 0
+                "execution_count": 84
             },
             {
                 "cell_type": "markdown",
@@ -1625,7 +1625,7 @@
                     "\n",
                     "print(\"Exceptions so far: \" + str(exception_df.count()))"
                 ],
-                "execution_count": 0
+                "execution_count": 85
             },
             {
                 "cell_type": "markdown",
@@ -1673,7 +1673,7 @@
                     "else: \n",
                     "    print(\"Transformation of data was successful\")"
                 ],
-                "execution_count": 0
+                "execution_count": 86
             },
             {
                 "cell_type": "markdown",
@@ -1724,7 +1724,7 @@
                     "        ON o.a_service_id = s.ref\n",
                     "    \"\"\")"
                 ],
-                "execution_count": 0
+                "execution_count": 87
             },
             {
                 "cell_type": "markdown",
@@ -1773,7 +1773,7 @@
                     "spark.sql(f\"CREATE TABLE {target_database}.{validation_table} USING DELTA LOCATION '{bronze_delta_path}'\")\n",
                     "print(f\"Table {target_database}.{validation_table} created from delta location\")"
                 ],
-                "execution_count": 0
+                "execution_count": 88
             },
             {
                 "cell_type": "markdown",
@@ -1810,7 +1810,7 @@
                     "data_validation_df = spark.read.format(\"delta\").load(bronze_delta_path)\n",
                     "print(\"Records to be validated: \" + str(data_validation_df.count()))"
                 ],
-                "execution_count": 0
+                "execution_count": 89
             },
             {
                 "cell_type": "markdown",
@@ -2028,7 +2028,7 @@
                     "    # Show the final results\n",
                     "    #grouped_occupancy_results.show(10)"
                 ],
-                "execution_count": 0
+                "execution_count": 90
             },
             {
                 "cell_type": "markdown",
@@ -2068,7 +2068,7 @@
                     "    error_msg = f\"Fact occupancy save error: {e}\"\n",
                     "    print(f\"Error: {e}\")       "
                 ],
-                "execution_count": 0
+                "execution_count": 91
             },
             {
                 "cell_type": "markdown",
@@ -2269,7 +2269,7 @@
                     "#print(\"validation_table: \" + validation_table)\n",
                     "spark.sql(f\"DROP TABLE IF EXISTS {target_database}.{validation_table}\")"
                 ],
-                "execution_count": 0
+                "execution_count": 92
             },
             {
                 "cell_type": "markdown",
@@ -2315,7 +2315,7 @@
                     "else: \n",
                     "    print(\"Row validation was successful, data will be merged\")"
                 ],
-                "execution_count": 0
+                "execution_count": 93
             }
         ]
     }
