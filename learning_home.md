@@ -12,6 +12,6 @@
   * [My Azure Synapse Notes](azure_synapse/my_synapse_notes_home.md)
 * [Docker](docker/docker.md)
 * [Git](github/git_cheatsheet.md)
-* [GitHub](github/git_demo.md)
+* [GitHub](github/git_demo2.md)
 * [Microsoft Learn](microsoft_learn/microsoft_learn_home.md)
 * [Python](python/python_home.md)
