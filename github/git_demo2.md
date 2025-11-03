@@ -179,3 +179,27 @@ $ git branch --all
   remotes/origin/workspace_publish
   remotes/origin/workspace_publish_prod
 ```
+
+## 4. Create all locally
+
+### 4.1 Prepare
+
+Switch to main and get latest
+
+```
+git fetch
+git switch main
+git pull
+```
+
+### 4.2 Create the branch
+
+```
+git branch dir_to_branch/my_new_branch_name
+```
+
+### 4.3 Push to remote
+
+```
+git push origin -u dir_to_branch/my_new_branch_name
+```
