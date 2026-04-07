@@ -68,7 +68,39 @@ FROM OPENROWSET(
     ) AS nyc
 ```
 
-## 3. Delta File History
+## 4. Joining data from file with data warehouse table
+
+```
+select ambu.region_id
+      ,ambu.ambulatory_id
+      ,ambu.ambulatory_name
+      ,ambu.clients
+      ,ambu.contacts
+      ,ambu_cmhc.NPersons as cmhc_clients
+      ,ambu_cmhc.Contacts as cmhc_contacts
+  from a1_mhe.dbo.fact_ambulatory ambu
+  join openrowset(
+    bulk 'https://wahmhcbdazestraw.blob.core.windows.net/raw/transactional/a1_mhe/ambu_cmhc.csv',
+    format = 'csv',
+    parser_version = '2.0',
+    firstrow = 2 )
+    WITH (
+         RegId VARCHAR(1000) COLLATE Latin1_General_100_BIN2_UTF8
+        ,orgid VARCHAR(1000) COLLATE Latin1_General_100_BIN2_UTF8
+        ,ClusId VARCHAR(1000) COLLATE Latin1_General_100_BIN2_UTF8
+        ,AmbuId VARCHAR(1000) COLLATE Latin1_General_100_BIN2_UTF8
+        ,AmbuName VARCHAR(1000) COLLATE Latin1_General_100_BIN2_UTF8
+        ,NPersons VARCHAR(1000) COLLATE Latin1_General_100_BIN2_UTF8
+        ,Contacts VARCHAR(1000) COLLATE Latin1_General_100_BIN2_UTF8
+    ) AS ambu_cmhc ON ambu.ambulatory_id = ambu_cmhc.AmbuId
+
+ where ambu.fin_year = '2024/25'
+ order BY
+       ambu.region_id
+```
+
+
+## 4. Delta File History
 
 You can view history using a timestamp or a version number. Query the versions from DESCRIBE HISTORY sql command;
 
